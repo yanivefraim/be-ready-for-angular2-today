@@ -1,8 +1,8 @@
 {
-  "name": "reveal.js",
+  "name": "be-ready-for-angular2-today",
   "version": "3.1.0",
   "description": "The HTML Presentation Framework",
-  "homepage": "http://lab.hakim.se/reveal-js",
+  "homepage": "http://yanivefraim.github.io",
   "subdomain": "revealjs",
   "main": "js/reveal.js",
   "scripts": {
@@ -10,13 +10,13 @@
     "start": "grunt serve"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "Yaniv Efraim",
+    "email": "yaniv.efraim@gmail.com",
+    "web": "http://yanivefraim.github.io"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git://github.com/yanivefraim/be-ready-for-angular2-today.git"
   },
   "engines": {
     "node": "~0.10.0"
@@ -40,6 +40,6 @@
     "grunt": "~0.4.0",
     "node-sass": "~0.9.3"
   },
-  
+
   "license": "MIT"
 }
