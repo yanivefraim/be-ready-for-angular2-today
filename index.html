@@ -44,7 +44,7 @@
 					<h1>BE READY FOR ANGULAR 2.0 TODAY</h1>
 					<div>
 						<p>Yaniv Efraim</p>
-						<p>Wix.com</p>
+						<div><img src="./images/wix_logo.png" style="border: none;height: 40px;background-color: transparent;" /><p>Wix.com</p></div>
 					</div>
 				</section>
 				<!-- <section>
@@ -125,28 +125,50 @@
 					</div>
 				</section>
 				<section>
-					<h3>Example - phonecat</h3>
-					<pre style="font-size: 0.50em;"><code style="max-height: 600px;" data-trim contenteditable>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2">
-      <!--Sidebar content-->
-      Search: <input ng-model="query">
-      Sort by:
-      <select ng-model="orderProp">
-        <option value="name">Alphabetical</option>
-        <option value="age">Newest</option>
-      </select>
+					<h3>Example - Theme Creator Demo</h3>
+					<div>
+					<img src="./images/theme_creator.png" width="70%" />
+					</div>
+				</section>
+				<section>
+					<h3>Example - Theme Creator Demo</h3>
+					<pre style="font-size: 0.35em;"><code style="max-height: 600px;" data-trim contenteditable>
+<div ng-controller="MainCtrl as ctrl">
+  <div class="left-sidebar">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit your Theme</h3>
+      </div>
+      <div class="panel-body">
+        <div class="control-group">
+          <label class="control-label" for="inputPassword">Font Family</label>
+          <div class="controls">
+            <select class="form-control" ng-model="ctrl.fontFamily">
+              <option value="Helvetica">Helvetica</option>
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="fontColor">Font Color</label>
+          <div class="controls">
+            <input id="fontColor" class="form-control" name="fontColor" ng-model="ctrl.fontColor" placeholder="#nnnnnn or <color-name>" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="fontSize">Font Size</label>
+          <div class="controls">
+            <input id="fontColor" class="form-control" type="number" name="fontSize" ng-model="ctrl.fontSize" />
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-10">
-      <!--Body content-->
-      <ul class="phones">
-        <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
-            class="thumbnail phone-listing">
-          <a href="#/phones/" class="thumb"><img ng-src=""></a>
-          <a href="#/phones/"></a>
-        </li>
-      </ul>
+  </div>
+  <div class="main panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Preview</h3>
+    </div>
+    <div class="theme-preview panel-body" ng-style="{'font-family': ctrl.fontFamily, 'color': ctrl.fontColor, 'font-size': ctrl.fontSize}">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
     </div>
   </div>
 </div>
@@ -157,10 +179,9 @@
 					<div>
 						<ul>
 							<li>Application main component (will be used as parent component in the hierarchy)</li>
-							<li>Search component</li>
-							<li>List component</li>
-							<li>List item component</li>
-							<li>Catalog details component</li>
+							<li>Left panel component</li>
+							<li>Input control components (font size etc.)</li>
+							<li>Preview component</li>
 						</ul>
 					</div>
 				</section>
