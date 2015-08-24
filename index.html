@@ -159,42 +159,22 @@
     			</aside>
 				</section>
 				<section>
-					<h3>Example - Theme Creator Demo</h3>
+					<h2>React - the good parts</h2>
+					<h4>(example - "Thinking in React")</h4>
 					<div>
-					<img src="./images/theme_creator.png" width="70%" />
+						<img src="./images/thinking-in-react-components.png" />
 					</div>
+					<a style="font-size: 14px;text-align: left;" href="https://facebook.github.io/react/docs/thinking-in-react.html" target="_blank">https://facebook.github.io/react/docs/thinking-in-react.html</a>
 				</section>
 				<section>
-					<h3><span style="color:#A9A9A9">Step 1</span> - Break the Code into Components (Main Component)</h3>
+					<h3>Demo - Theme Creator</h3>
 					<div>
-						<img src="./images/theme_creator_blocks1.png" width="70%" />
+						<img src="./images/theme_creator.png"/>
 					</div>
+					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1</a>
 				</section>
 				<section>
-					<h3><span style="color:#A9A9A9">Step 1</span> - Break the Code into Components (Child Components)</h3>
-					<div>
-						<img src="./images/theme_creator_blocks2.png" width="70%" />
-					</div>
-				</section>
-				<section>
-					<h3><span style="color:#A9A9A9">Step 1</span> - Break the Code into Components</h3>
-					<div>
-						<ul>
-							<li>Application main component (will be used as parent component in the hierarchy)</li>
-							<li>Left panel component</li>
-							<li>Input control components (font size etc.)</li>
-							<li>Preview component</li>
-						</ul>
-					</div>
-				</section>
-				<section>
-					<h3><span style="color:#A9A9A9">Step 2</span> - Create a Hierarchy Tree</h3>
-					<div>
-					Image here...
-					</div>
-				</section>
-				<section>
-					<h3>Example - Theme Creator Demo. "Regular" Angular 1.x</h3>
+					<h3>"Regular" Angular 1.x</h3>
 					<pre><code style="max-height: 600px;" data-trim contenteditable>
 <div ng-controller="MainCtrl as ctrl">
   <div class="left-sidebar">
@@ -213,7 +193,30 @@
 					</code></pre>
 				</section>
 				<section>
-					<h3>Angular 1.x component tree - main Application component</h3>
+					<h3><span style="color:#A9A9A9">Step 1</span> - Break the Code into Components</h3>
+					<div>
+						<img src="./images/theme_creator_blocks2.png" width="70%" />
+					</div>
+				</section>
+				<section>
+					<h3><span style="color:#A9A9A9">Step 1</span> - Break the Code into Components</h3>
+					<div>
+						<ul>
+							<li>Application main component (will be used as parent component in the hierarchy)</li>
+							<li>Left panel component</li>
+							<li>Input control components (font size etc.)</li>
+							<li>Preview component</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3><span style="color:#A9A9A9">Step 2</span> - Create a Hierarchy Tree</h3>
+					<div>
+					<img src="./images/editor_tree.png" style="margin-right: 80px"/>
+					</div>
+				</section>
+				<section>
+					<h3><span style="color:#A9A9A9">Step 2</span> - Hierarchy Tree, "Main Application" component</h3>
 					<pre><code data-trim contenteditable>
 <div class="left-sidebar">
   <theme-editor-panel-component on-font-size-change="ctrl.onFontSizeChange(fontSize)" on-font-color-change="ctrl.onFontColorChange(fontColor)" on-font-family-change="ctrl.onFontFamilyChange(fontFamily)" font-size="{{ctrl.fontSize}}" font-family="{{ctrl.fontFamily}}" font-color="{{ctrl.fontColor}}"></theme-editor-panel-component>
@@ -221,7 +224,49 @@
 <div class="main panel panel-primary">
   <theme-preview-panel-component font-size="{{ctrl.fontSize}}" font-family="{{ctrl.fontFamily}}" font-color="{{ctrl.fontColor}}"></theme-preview-panel-component>
 </div>
-					</code>
+					</code></pre>
+				</section>
+				<section>
+					<h3><span style="color:#A9A9A9">Step 2</span> - Hierarchy Tree, "Theme Editor" component</h3>
+					<pre><code data-trim contenteditable>
+<div class="control-group">
+  <label class="control-label">Font Family</label>
+  <font-family-component font-family="{{ctrl.fontFamily}}" font-family-changed="ctrl.onFontFamilyChangeEvent(fontFamily)"></font-family-component>
+</div>
+<div class="control-group">
+  <label class="control-label" for="fontColor">Font Color</label>
+  <font-color-component font-color="{{ctrl.fontColor}}" font-color-changed="ctrl.onFontColorChangeEvent(fontColor)"></font-color-component>
+</div>
+<div class="control-group">
+  <label class="control-label" for="fontSize">Font Size</label>
+  <font-size-component font-size="{{ctrl.fontSize}}" font-size-changed="ctrl.onFontSizeChangeEvent(fontSize)"></font-size-component>
+</div>
+	</code>
+</pre>
+				</section>
+				<section>
+					<h3><span style="color:#A9A9A9">Step 2</span> - Hierarchy Tree, "Font Size" component</h3>
+					<pre><code data-trim contenteditable>
+  directive('fontSizeComponent', function() {
+ return {
+  template: '<input ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>',
+  scope: {},
+  bindToController: {
+   fontSize: "@",
+   fontSizeChanged: "&"
+  },
+  controllerAs: 'ctrl',
+  controller: function() {
+   var that = this;
+   this.fontSizeChangedEvent = function() {
+    that.fontSizeChanged({fontSize: that.fontSize});
+   };
+  }
+ };
+});
+
+	</code>
+</pre>
 				</section>
 			</div>
 
