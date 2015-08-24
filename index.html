@@ -182,10 +182,10 @@
       <option value="Helvetica">Helvetica</option>
     </select>
     <input id="fontColor" class="form-control" name="fontColor" ng-model="ctrl.fontColor" placeholder="#nnnnnn or <color-name>" />
-    <input id="fontColor" class="form-control" type="number" name="fontSize" ng-model="ctrl.fontSize" />
+    <input ng-model="ctrl.fontSize" />
   </div>
   <div class="main panel panel-primary">
-    <div class="theme-preview panel-body" ng-style="{'font-family': ctrl.fontFamily, 'color': ctrl.fontColor, 'font-size': ctrl.fontSize}">
+    <div ng-style="{'font-family': ctrl.fontFamily, 'color': ctrl.fontColor, 'font-size': ctrl.fontSize}">
       <p>Lorem ipsum dolor sit amet, consectetur ...</p>
     </div>
   </div>
@@ -195,7 +195,7 @@
 				<section>
 					<h3><span style="color:#A9A9A9">Step 1</span> - Break the Code into Components</h3>
 					<div>
-						<img src="./images/theme_creator_blocks2.png" width="70%" />
+						<img src="./images/theme_creator_blocks2.png" />
 					</div>
 				</section>
 				<section>
@@ -212,8 +212,9 @@
 				<section>
 					<h3><span style="color:#A9A9A9">Step 2</span> - Create a Hierarchy Tree</h3>
 					<div>
-					<img src="./images/editor_tree.png" style="margin-right: 80px"/>
+					<img src="./images/editor_tree.png" style="margin-right: 80px; margin-top: -30px;"/>
 					</div>
+					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1-2" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1-2</a>
 				</section>
 				<section>
 					<h3><span style="color:#A9A9A9">Step 2</span> - Hierarchy Tree, "Main Application" component</h3>
