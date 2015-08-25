@@ -305,6 +305,32 @@
 						</ul>
 					</div>
 				</section>
+				<section>
+					<h3>Convert our "Font Size" directive to ES2015</h3>
+					<pre><code data-trim contenteditable>
+class FontSizeComponent {
+  /* @ngInject */
+  constructor($scope, $element) {
+  }
+  fontSizeChangedEvent() {
+    this.fontSizeChanged({fontSize: this.fontSize});
+  };
+}
+angular.module('...').directive('fontSizeComponent', () => {
+    return {
+      template: `<input id="fontSize" class="form-control" name="fontSize" ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>`,
+      controller: FontSizeComponent,
+      scope: {},
+      bindToController: {
+        fontSize: "@",
+        fontSizeChanged: "&"
+      },
+      controllerAs: 'ctrl'
+    };
+  });
+	</code>
+</pre>
+				</section>
 			</div>
 		</div>
 
