@@ -331,6 +331,26 @@ angular.module('...').directive('fontSizeComponent', () => {
 	</code>
 </pre>
 				</section>
+				<section>
+				<h3>Bonus - use "angular-decorators"</h3>
+				<pre><code data-trim contenteditable>
+				import {Component, Inject, Module} from 'angular-decorators';
+@Component({
+  selector: 'my-component',
+  properties: [
+      'myProp: =renamedProp',
+      '@anotherAttribute'
+  ]
+})
+class MyComponentCtrl
+				</code></pre>
+				</section>
+				<section>
+					<h3>Use Typescript</h3>
+				</section>
+				<section>
+					<h3>Migrate our demo app to Angular 2.0</h3>
+				</section>
 			</div>
 		</div>
 
