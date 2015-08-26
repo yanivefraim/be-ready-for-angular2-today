@@ -19,7 +19,14 @@
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/drakula.css">
-
+		<style>
+		.reveal table th, .reveal table td {
+			border: 1px solid;
+		}
+		.reveal table th {
+			background-color: #FF8C00;
+		}
+		</style>
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -138,7 +145,37 @@
 					</div>
 				</section>
 				<section>
-					Add table for Angular 2.0 template syntax
+					<h3>Angular 2.0 Template Syntax/Semantics</h3>
+					<table style="border: 1px solid">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Short</th>
+								<th>Canonical</th>
+								<th>Javascript</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="background-color: #A9A9A9">Property Binding</td>
+								<td>[prop]="exp"</td>
+								<td>bind-prop="exp"</td>
+								<td>e['prop'] = exp;</td>
+							</tr>
+							<tr>
+								<td style="background-color: #A9A9A9">Event Binding</td>
+								<td>(event)="stmt"</td>
+								<td>on-event="stmt"</td>
+								<td>e.addEventListener('event', stmt);</td>
+							</tr>
+							<tr>
+								<td style="background-color: #A9A9A9">Ref Binding</td>
+								<td>#x</td>
+								<td>var-x</td>
+								<td>var x = e;</td>
+							</tr>
+						</tbody>
+					</table>
 				</section>
 				<section>
 					<h2>Component Tree Architecture - Why Is It Better</h2>
