@@ -146,7 +146,8 @@
 				</section>
 				<section>
 					<h3>Angular 2.0 Template Syntax/Semantics</h3>
-					<table style="border: 1px solid">
+					<div class="stretch">
+						<table style="border: 1px solid">
 						<thead>
 							<tr>
 								<th></th>
@@ -176,6 +177,8 @@
 							</tr>
 						</tbody>
 					</table>
+					</div>
+
 				</section>
 				<section>
 					<h2>Component Tree Architecture - Why Is It Better</h2>
@@ -210,10 +213,17 @@
 					</div>
 					<a style="font-size: 14px;text-align: left;" href="https://facebook.github.io/react/docs/thinking-in-react.html" target="_blank">https://facebook.github.io/react/docs/thinking-in-react.html</a>
 				</section>
-				<section>
+				<!-- <section>
 					<h3>Demo - Theme Creator</h3>
 					<div>
 						<img src="./images/theme_creator.png"/>
+					</div>
+					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1</a>
+				</section> -->
+				<section style="top: 42px; display: block;">
+					<h3>Demo - Theme Creator</h3>
+					<div style="height: 420px;width: 100%;">
+						<iframe src="http://yanivefraim.github.io/angular-theme-creator-demo" style="height: 100%;width: 100%;"></iframe>
 					</div>
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1</a>
 				</section>
@@ -222,9 +232,7 @@
 					<pre><code style="max-height: 600px;" data-trim contenteditable>
 <div ng-controller="MainCtrl as ctrl">
   <div class="left-sidebar">
-    <select class="form-control" ng-model="ctrl.fontFamily">
-      <option value="Helvetica">Helvetica</option>
-    </select>
+    <select class="form-control" ng-model="ctrl.fontFamily" ng-options="font for font in ctrl.fonts"></select>
     <input id="fontColor" class="form-control" name="fontColor" ng-model="ctrl.fontColor" placeholder="#nnnnnn or <color-name>" />
     <input ng-model="ctrl.fontSize" />
   </div>
