@@ -144,7 +144,7 @@
 						<img src="./images/parent_child.png" width="100%" style="margin: 0;background: none;border: none;box-shadow: none;" />
 					</div>
 				</section>
-				<section>
+				<!-- <section>
 					<h3>Angular 2.0 Template Syntax/Semantics</h3>
 					<div class="stretch">
 						<table style="border: 1px solid">
@@ -179,7 +179,7 @@
 					</table>
 					</div>
 
-				</section>
+				</section> -->
 				<section>
 					<h2>Component Tree Architecture - Why Is It Better</h2>
 					<div>
@@ -359,28 +359,61 @@
 				<section>
 					<h3>Convert our "Font Size" directive to ES2015</h3>
 					<pre><code data-trim contenteditable>
+import angular from 'angular';
+import template from './font-size-component.tpl'
+
 class FontSizeComponent {
   /* @ngInject */
-  constructor($scope, $element) {
+  constructor() {
   }
   fontSizeChangedEvent() {
     this.fontSizeChanged({fontSize: this.fontSize});
-  };
+  }
 }
-angular.module('...').directive('fontSizeComponent', () => {
+
+export default angular
+  .module('themeCreatorFontSizeComponentModule', [template.name])
+  .directive('fontSizeComponent', function() {
     return {
-      template: `<input id="fontSize" class="form-control" name="fontSize" ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>`,
+      templateUrl: template.name,
       controller: FontSizeComponent,
-      scope: {},
-      bindToController: {
+      scope: {
         fontSize: "@",
         fontSizeChanged: "&"
       },
-      controllerAs: 'ctrl'
+      bindToController: true,
+      controllerAs: 'ctrl',
     };
   });
 	</code>
 </pre>
+<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo-es2015" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo-es2015</a>
+				</section>
+				<section>
+					<h3>Angular2 'FontSize' Component</h3>
+					<pre><code data-trim contenteditable>
+					import {Component, View, NgModel} from 'angular2/angular2';
+@Component({
+  selector: 'font-size-component',
+  properties: ['fontSize'],
+  events: ['fontSizeChanged']
+})
+@View ({
+  template: `<input id="fontSize" class="form-control" name="fontSize" [ng-model]="fontSize"/>`,
+  directives: [NgModel]
+})
+export class FontSizeComponent {
+  fontSize: string;
+  fontSizeChanged: Function;
+  constructor() {
+  }
+  fontSizeChangedEvent() {
+    this.fontSizeChanged({fontSize: this.fontSize});
+  }
+}
+
+					</code>
+					</pre>
 				</section>
 				<section>
 				<h3>Bonus - use "angular-decorators"</h3>
