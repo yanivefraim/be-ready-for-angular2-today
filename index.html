@@ -451,6 +451,28 @@ export class FontSizeComponent {
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
 				</section>
 				<section>
+					<h3>Angular2 'FontSize' Component, Option 2</h3>
+					<pre><code data-trim contenteditable>
+import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
+@Component({
+    selector: 'font-size-component',
+    properties: ['fontSize'],
+    events: ['fontSizeChange']
+})
+@View({
+    template: `<input [ng-model]="fontSizeModel" (input)="fontSizeChange.next($event.target.value)" id="fontSize" />`,
+    directives: [FORM_DIRECTIVES]
+})
+export class FontSizeComponent {
+    fontSize: string;
+    fontSizeChange = new EventEmitter();
+}
+
+					</code>
+					</pre>
+					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
+				</section>
+				<section>
 					<h3>Angular 2 VS Angular 1.X: DIFF</h3>
 					<div>Live Demo</div>
 				</section>
