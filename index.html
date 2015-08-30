@@ -392,16 +392,27 @@ export default angular
 				<section>
 					<h3>Angular2 'FontSize' Component</h3>
 					<pre><code data-trim contenteditable>
-					import {Component, View} from 'angular2/angular2';
-import {NgModelDirective as NgModel} from '../ng-model/ng-model';
+
+					import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
+
 
 @Component({
+  selector: 'font-size-component',
+  properties: ['fontSize'],
+  events: ['fontSizeChanged']
+    selector: 'font-size-component',
+    properties: ['fontSize'],
+    events: ['fontSizeChange']
   selector: 'font-size-component',
   properties: [
     'font'
   ]
 })
 @View({
+  template: `<input id="fontSize" class="form-control" name="fontSize" [ng-model]="fontSize"/>`,
+  directives: [NgModel]
+    template: `<input id="fontSize" [(ng-model)]="fontSizeModel"/>`,
+    directives: [FORM_DIRECTIVES]
   template: `<input id="fontSize" class="form-control" name="fontSize" ([ng-model])="font.fontSize"/>`,
   directives: [
     NgModel
@@ -409,14 +420,24 @@ import {NgModelDirective as NgModel} from '../ng-model/ng-model';
 })
 
 export class FontSizeComponent {
-  font;
-  constructor() {
+    fontSize: string;
+    fontSizeChange = new EventEmitter();
+    get fontSizeModel() {
+      return this.fontSize;
+    }
+    set fontSizeModel(value) {
+      this.fontSizeChange.next(value);
+    }
 
   }
 }
 					</code>
 					</pre>
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
+				</section>
+				<section>
+					<h3>Angular 2 VS Angular 1.X: DIFF</h3>
+					<div>Live Demo</div>
 				</section>
 				<section>
 				<h3>Decorators & Abbotations</h3>
