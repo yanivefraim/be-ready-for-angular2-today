@@ -392,32 +392,38 @@ export default angular
 				<section>
 					<h3>Angular2 'FontSize' Component</h3>
 					<pre><code data-trim contenteditable>
-					import {Component, View, NgModel} from 'angular2/angular2';
+					import {Component, View} from 'angular2/angular2';
+import {NgModelDirective as NgModel} from '../ng-model/ng-model';
+
 @Component({
   selector: 'font-size-component',
-  properties: ['fontSize'],
-  events: ['fontSizeChanged']
+  properties: [
+    'font'
+  ]
 })
-@View ({
-  template: `<input id="fontSize" class="form-control" name="fontSize" [ng-model]="fontSize"/>`,
-  directives: [NgModel]
+@View({
+  template: `<input id="fontSize" class="form-control" name="fontSize" ([ng-model])="font.fontSize"/>`,
+  directives: [
+    NgModel
+  ]
 })
+
 export class FontSizeComponent {
-  fontSize: string;
-  fontSizeChanged: Function;
+  font;
   constructor() {
-  }
-  fontSizeChangedEvent() {
-    this.fontSizeChanged({fontSize: this.fontSize});
+
   }
 }
-
 					</code>
 					</pre>
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
 				</section>
 				<section>
-				<h3>Bonus - use "angular-decorators"</h3>
+				<h3>Decorators & Abbotations</h3>
+				<div>(few words)</div>
+				</section>
+				<section>
+				<h3>Bonus - use Angular 1.x With Decorators</h3>
 				<pre><code data-trim contenteditable>
 				import {Component, Inject, Module} from 'angular-decorators';
 @Component({
