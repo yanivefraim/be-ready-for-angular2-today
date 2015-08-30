@@ -115,7 +115,6 @@
 						<li>Progressively upgrade (step by step). ngUpgrade.js</li>
 						<li>Angular 1 module.component() Helper</li>
 						<li>Angular 1 Annotation Support</li>
-						<li>???</li>
 					</ul>
 				</section>
 				<section>
@@ -360,34 +359,68 @@
 					<h3>Convert our "Font Size" directive to ES2015</h3>
 					<pre><code data-trim contenteditable>
 import angular from 'angular';
-import template from './font-size-component.tpl'
-
-class FontSizeComponent {
-  /* @ngInject */
-  constructor() {
-  }
-  fontSizeChangedEvent() {
-    this.fontSizeChanged({fontSize: this.fontSize});
-  }
-}
-
 export default angular
-  .module('themeCreatorFontSizeComponentModule', [template.name])
+  .module('themeCreatorFontSizeComponentModule', [])
   .directive('fontSizeComponent', function() {
     return {
-      templateUrl: template.name,
-      controller: FontSizeComponent,
+      template: `<input ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>`,
       scope: {
         fontSize: "@",
         fontSizeChanged: "&"
       },
       bindToController: true,
       controllerAs: 'ctrl',
+      controller: FontSizeComponent
     };
   });
+
+class FontSizeComponent {
+  /* @ngInject */
+  constructor() {
+  }
+
+  fontSizeChangedEvent() {
+    this.fontSizeChanged({fontSize: this.fontSize});
+  }
+}
+
 	</code>
 </pre>
 <a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo-es2015" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo-es2015</a>
+				</section>
+								<section>
+					<h3>Convert our "Font Size" directive to TypeScript</h3>
+					<pre><code data-trim contenteditable>
+import angular from 'angular';
+export default angular
+  .module('themeCreatorFontSizeComponentModule', [])
+  .directive('fontSizeComponent', function() {
+    return {
+      template: `<input ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>`,
+      scope: {
+        fontSize: "@",
+        fontSizeChanged: "&"
+      },
+      bindToController: true,
+      controllerAs: 'ctrl',
+      controller: FontSizeComponent
+    };
+  });
+
+class FontSizeComponent {
+  fontSize: string;
+  fontSizeChanged: Function;
+  /* @ngInject */
+  constructor() {
+  }
+
+  fontSizeChangedEvent() {
+    this.fontSizeChanged({fontSize: this.fontSize});
+  }
+}
+
+	</code>
+</pre>
 				</section>
 				<section>
 					<h3>Angular2 'FontSize' Component</h3>
@@ -438,12 +471,6 @@ export class FontSizeComponent {
 })
 class MyComponentCtrl
 				</code></pre>
-				</section>
-				<section>
-					<h3>Use Typescript</h3>
-				</section>
-				<section>
-					<h3>Migrate our demo app to Angular 2.0</h3>
 				</section>
 			</div>
 		</div>
