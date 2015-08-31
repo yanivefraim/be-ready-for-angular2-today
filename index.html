@@ -110,6 +110,16 @@
 					<img src="./images/graves.png" />
 				</section>
 				<section>
+					<h3>What is wrong with Angular 1.X?</h3>
+					<ul>
+							<li>Scope inheritance</li>
+							<li>Digest loop/two-way databinding</li>
+							<li>Modules are not real modules</li>
+							<li>Directive's syntax is too</li>
+							<li>jQuery/jqLight</li>
+						</ul>
+				</section>
+				<section>
 					<h2>Migration Path?</h2>
 					<ul>
 						<li>Progressively upgrade (step by step). ngUpgrade.js</li>
@@ -324,7 +334,7 @@
 					<h2>What can I do in order to be ready for Angular 2.0?</h2>
 					<div>
 						<ol>
-							<li>Use <span style="color:#71ebf4">Component Tree</span> Architecture</li>
+							<li style="opacity: 0.2;">Use Component Tree Architecture</li>
 							<li><span style="color:#FF8C00">Write Angular 1.x Components using ES2015/Typescript</span></li>
 							<li>Use the <span style="color:#71ebf4">"New Router"</span></li>
 						</ol>
@@ -334,7 +344,7 @@
 					<h2>Why ES2015?</h2>
 					<div>
 						<ul>
-							<li>This is the future :)</li>
+							<li>This is the (near) future :)</li>
 							<li>Modules</li>
 							<li>Arrow functions</li>
 							<li>Block-level scope</li>
@@ -378,7 +388,6 @@ class FontSizeComponent {
   /* @ngInject */
   constructor() {
   }
-
   fontSizeChangedEvent() {
     this.fontSizeChanged({fontSize: this.fontSize});
   }
@@ -413,7 +422,6 @@ class FontSizeComponent {
   /* @ngInject */
   constructor() {
   }
-
   fontSizeChangedEvent() {
     this.fontSizeChanged({fontSize: this.fontSize});
   }
@@ -422,36 +430,8 @@ class FontSizeComponent {
 	</code>
 </pre>
 				</section>
-				<section>
+								<section>
 					<h3>Angular2 'FontSize' Component</h3>
-					<pre><code data-trim contenteditable>
-import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
-@Component({
-    selector: 'font-size-component',
-    properties: ['fontSize'],
-    events: ['fontSizeChange']
-})
-@View({
-    template: `<input id="fontSize" [(ng-model)]="fontSizeModel"/>`,
-    directives: [FORM_DIRECTIVES]
-})
-export class FontSizeComponent {
-    fontSize: string;
-    fontSizeChange = new EventEmitter();
-    get fontSizeModel() {
-      return this.fontSize;
-    }
-    set fontSizeModel(value) {
-      this.fontSizeChange.next(value);
-    }
-}
-
-					</code>
-					</pre>
-					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
-				</section>
-				<section>
-					<h3>Angular2 'FontSize' Component, Option 2</h3>
 					<pre><code data-trim contenteditable>
 import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
 @Component({
@@ -473,26 +453,46 @@ export class FontSizeComponent {
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
 				</section>
 				<section>
+					<h3>Angular2 'FontSize' Component, Option 2</h3>
+					<pre><code data-trim contenteditable>
+import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
+@Component({
+    selector: 'font-size-component',
+    properties: ['fontSize'],
+    events: ['fontSizeChange']
+})
+@View({
+    template: `<input id="fontSize" [(ng-model)]="fontSizeModel"/>`,
+    directives: [FORM_DIRECTIVES]
+})
+
+export class FontSizeComponent {
+    fontSize: string;
+    fontSizeChange = new EventEmitter();
+    get fontSizeModel() {
+      return this.fontSize;
+    }
+    set fontSizeModel(value) {
+      this.fontSizeChange.next(value);
+    }
+}
+
+					</code>
+					</pre>
+					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
+				</section>
+				<section>
 					<h3>Angular 2 VS Angular 1.X: DIFF</h3>
 					<div>Live Demo</div>
 				</section>
 				<section>
-				<h3>Decorators & Abbotations</h3>
+				<h3>Decorators & Annotations</h3>
 				<div>(few words)</div>
 				</section>
 				<section>
 				<h3>Bonus - use Angular 1.x With Decorators</h3>
-				<pre><code data-trim contenteditable>
-				import {Component, Inject, Module} from 'angular-decorators';
-@Component({
-  selector: 'my-component',
-  properties: [
-      'myProp: =renamedProp',
-      '@anotherAttribute'
-  ]
-})
-class MyComponentCtrl
-				</code></pre>
+				http://plnkr.co/edit/JhHlOr?p=preview
+				https://github.com/pbastowski/angular2-now
 				</section>
 			</div>
 		</div>
