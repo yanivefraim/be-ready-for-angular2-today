@@ -440,7 +440,7 @@ import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2'
     events: ['fontSizeChange']
 })
 @View({
-    template: `<input [ng-model]="fontSizeModel" (input)="fontSizeChange.next($event.target.value)" id="fontSize" />`,
+    template: `<input [ng-model]="fontSize" (input)="fontSizeChange.next($event.target.value)" id="fontSize" />`,
     directives: [FORM_DIRECTIVES]
 })
 export class FontSizeComponent {
