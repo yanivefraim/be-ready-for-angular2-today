@@ -132,7 +132,7 @@
 						<ol>
 							<li>Use <span style="color:#71ebf4">Component Tree</span> Architecture</li>
 							<li>Write Angular 1.x Components using <span style="color:#71ebf4">ES2015/Typescript</span></li>
-							<li>Use the <span style="color:#71ebf4">"New Router"</span></li>
+							<li>Use the <span style="color:#71ebf4">"New Router"</span> (Angular 1.5)</li>
 						</ol>
 					</div>
 				</section>
@@ -142,7 +142,7 @@
 						<ol>
 							<li><span style="color:#FF8C00">Use Component Tree Architecture</span></li>
 							<li>Write Angular 1.x Components using <span style="color:#71ebf4">ES2015/Typescript</span></li>
-							<li>Use the <span style="color:#71ebf4">"New Router"</span></li>
+							<li>Use the <span style="color:#71ebf4">"New Router"</span> (Angular 1.5)</li>
 						</ol>
 					</div>
 				</section>
@@ -345,7 +345,7 @@
 						<ol>
 							<li style="opacity: 0.2;">Use Component Tree Architecture</li>
 							<li><span style="color:#FF8C00">Write Angular 1.x Components using ES2015/Typescript</span></li>
-							<li>Use the <span style="color:#71ebf4">"New Router"</span></li>
+							<li>Use the <span style="color:#71ebf4">"New Router"</span> (Angular 1.5)</li>
 						</ol>
 					</div>
 				</section>
@@ -491,7 +491,7 @@ export class FontSizeComponent {
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
 				</section>
 				<section>
-					<h3>Angular 2 VS Angular 1.X: DIFF</h3>
+					<h3>Angular 2 Component VS Angular 1.X Component: DIFF</h3>
 					<div>Live Demo</div>
 				</section>
 				<section>
@@ -509,9 +509,73 @@ export class FontSizeComponent {
 						<ol>
 							<li style="opacity: 0.2;">Use Component Tree Architecture</span></li>
 							<li style="opacity: 0.2;">Write Angular 1.x Components using <span style="color:#71ebf4">ES2015/Typescript</span></li>
-							<li><span style="color:#FF8C00">Use the "New Router"</span></li>
+							<li><span style="color:#FF8C00">Use the "New Router"</span> (Angular 1.5)</li>
 						</ol>
 					</div>
+				</section>
+				<section>
+					<h3>Why building a new router?</h3>
+					<div>
+						<ul>
+							<li>ngRoute - too simple</li>
+							<li>ui-router - not build for component architecture</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3>The new router - Component Router</h3>
+					<div>
+						<ul>
+							<li>Built with Component Structure in mind: route per component</li>
+							<li>Will be ported to Angular 1.5</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3>Porting to the new router</h3>
+					<div style="display: inline-block;width: 40%;">
+						<ul style="list-style-type: none;text-align: center;">
+							<li>ui-route</li>
+							<li>$stateProvider.state()</li>
+							<li>ui-view</li>
+							<li>ui-sref</li>
+						</ul>
+					</div>
+					<div style="display: inline-block;width: 40%;margin-left: 40px;">
+						<ul style="list-style-type: none;text-align: center;">
+							<li>ngComponentRouter</li>
+							<li>$router.config()</li>
+							<li>ng-outlet</li>
+							<li>ng-link</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3>Settings - based on conventions</h3>
+					<div style="display: inline-block;width: 40%;vertical-align: top;">
+  <span>ui-route</span>
+  <pre><code data-trim contenteditable>
+  $stateProvider
+.state('IndexComp', {
+  url: '/home',
+  templateUrl: 'home.tpl.html',
+  controller: 'HomeController',
+  controllerAs: 'home'
+})
+		</code></pre>
+
+</div>
+<div style="display: inline-block;width: 40%;margin-left: 20px;vertical-align: top;">
+<span>Component Route</span>
+<pre><code data-trim contenteditable>
+$router.config([
+  {
+    path: '/home',
+    component: 'home'
+  }
+]);
+</code></pre>
+</div>
 				</section>
 			</div>
 		</div>
