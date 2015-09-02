@@ -90,8 +90,21 @@
 				</div></div>
 				<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 36px; height: 36px; position: absolute;left: 319px; top: 435px;" data-block-id="e853435f27d034015a7994fa99168308"><a class="sl-block-content" style="z-index: 20;" href="https://twitter.com/yanivef" target="_blank"><img style="visibility: visible;" data-natural-width="67" data-natural-height="67" src="./images/IN_copy_grey_lighter.png"></a></div></section>
 				<section>
-					<h2>Why Angular 2 </h2>
-					<h4>(or, Why should I use Angular 2)</h4>
+					<h3>What is wrong with Angular 1.X?</h3>
+					<ul>
+							<li>Scope inheritance</li>
+							<li>Digest loop/Two-way databinding</li>
+							<li>Modules are not real modules</li>
+							<li>Directive's syntax is too complex</li>
+							<li>jQuery/jqLight</li>
+						</ul>
+				</section>
+				<section>
+					<h2>Why is Angular 2 better? </h2>
+					<img src="./images/graves.png" />
+				</section>
+				<section>
+					<h2>Why is Angular 2 better?</h2>
 					<div>
 						<ul>
 							<li>Modular</li>
@@ -102,21 +115,6 @@
 							<li>Less opinionated framework- write plain Javascript</li>
 						</ul>
 					</div>
-				</section>
-				<section>
-					<h2>Why, Angular 2 </h2>
-					<h4>(or, Why, Angular 2, Why??)</h4>
-					<img src="./images/graves.png" />
-				</section>
-				<section>
-					<h3>What is wrong with Angular 1.X?</h3>
-					<ul>
-							<li>Scope inheritance</li>
-							<li>Digest loop/Two-way databinding</li>
-							<li>Modules are not real modules</li>
-							<li>Directive's syntax is too complex</li>
-							<li>jQuery/jqLight</li>
-						</ul>
 				</section>
 				<section>
 					<h2>Migration Path?</h2>
@@ -147,7 +145,8 @@
 					</div>
 				</section>
 				<section>
-					<h1>Component Tree Structure !== Directory Tree Structure!!</h1>
+					<h2>First Things First</h1>
+					<h1 style="border: solid white 1px;">Component Tree Structure !== Directory Tree Structure!!</h1>
 					Image here
 				</section>
 				<section>
@@ -239,7 +238,7 @@
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1</a>
 				</section> -->
 				<section style="top: 42px; display: block;">
-					<h3>Demo - Theme Creator</h3>
+					<h3>Lets do it ourselvs</h3>
 					<div style="height: 420px;width: 100%;">
 						<iframe src="http://yanivefraim.github.io/angular-theme-creator-demo" style="height: 100%;width: 100%;"></iframe>
 					</div>
@@ -317,7 +316,7 @@
 				</section>
 				<section>
 					<h3><span style="color:#A9A9A9">Step 2</span> - Hierarchy Tree, "Font Size" component</h3>
-					<pre><code data-trim contenteditable>
+					<pre><code data-trim contenteditable  style="line-height: 2em">
   directive('fontSizeComponent', function() {
  return {
   template: '<input ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>',
@@ -376,7 +375,7 @@
 				</section>
 				<section>
 					<h3>Convert our "Font Size" directive to ES2015</h3>
-					<pre><code data-trim contenteditable>
+					<pre><code data-trim contenteditable style="line-height: 2.1em">
 import angular from 'angular';
 export default angular
   .module('themeCreatorFontSizeComponentModule', [])
@@ -408,7 +407,7 @@ class FontSizeComponent {
 				</section>
 								<section>
 					<h3>Convert our "Font Size" directive to TypeScript</h3>
-					<pre><code data-trim contenteditable>
+					<pre><code data-trim contenteditable style="line-height: 2.1em">
 import angular from 'angular';
 export default angular
   .module('themeCreatorFontSizeComponentModule', [])
@@ -439,9 +438,77 @@ class FontSizeComponent {
 	</code>
 </pre>
 				</section>
+				<section>
+					<h3>Lets take it one step further</h3>
+					<div style="display: inline-block;width: 40%;vertical-align: top;">
+					<div>Angular 1.X</div>
+					<pre><code data-trim contenteditable  style="font-size: 0.8em;line-height: 1.5em">
+import angular from 'angular';
+export default angular.module('themeCreatorFontSizeComponentModule', [])
+
+.directive('fontSizeComponent', function() {
+  return {
+    scope: {
+      fontSize: "@",
+      fontSizeChanged: "&"
+    },
+    template: `<input ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>`,
+    bindToController: true,
+    controllerAs: 'ctrl',
+    controller: FontSizeComponent
+  };
+});
+
+class FontSizeComponent {
+  fontSize: string;
+  fontSizeChanged: Function;
+  /* @ngInject */
+  constructor() {
+  }
+  fontSizeChangedEvent() {
+    this.fontSizeChanged({fontSize: this.fontSize});
+  }
+}
+
+	</code>
+</pre>
+					</div>
+					<div style="display: inline-block;width: 40%;margin-left: 40px;vertical-align: top;">
+					<div>Angular 2.0</div>
+					<pre><code data-trim contenteditable style="font-size: 0.8em;line-height: 1.5em">
+import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
+
+
+@Component({
+    selector: 'font-size-component',
+    properties: ['fontSize'],
+    events: ['fontSizeChange']
+})
+@View({
+    template: `<input [ng-model]="fontSize" (input)="fontSizeChange.next($event.target.value)" id="fontSize" />`,
+    directives: [FORM_DIRECTIVES]
+})
+
+
+
+
+export class FontSizeComponent {
+    fontSize: string;
+    fontSizeChange = new EventEmitter();
+}
+
+
+
+
+
+`
+					</code>
+					</pre>
+					</div>
+				</section>
 								<section>
 					<h3>Angular2 'FontSize' Component</h3>
-					<pre><code data-trim contenteditable>
+					<pre><code data-trim contenteditable style="line-height: 1.6em; font-size: 1.1em;">
 import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
 @Component({
     selector: 'font-size-component',
@@ -463,7 +530,7 @@ export class FontSizeComponent {
 				</section>
 				<section>
 					<h3>Angular2 'FontSize' Component, Option 2</h3>
-					<pre><code data-trim contenteditable>
+					<pre><code data-trim contenteditable style="line-height: 1.6em">
 import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
 @Component({
     selector: 'font-size-component',
@@ -474,7 +541,6 @@ import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2'
     template: `<input id="fontSize" [(ng-model)]="fontSizeModel"/>`,
     directives: [FORM_DIRECTIVES]
 })
-
 export class FontSizeComponent {
     fontSize: string;
     fontSizeChange = new EventEmitter();
@@ -490,19 +556,10 @@ export class FontSizeComponent {
 					</pre>
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
 				</section>
-				<section>
+				<!-- <section>
 					<h3>Angular 2 Component VS Angular 1.X Component: DIFF</h3>
 					<div>Live Demo</div>
-				</section>
-				<section>
-				<h3>Decorators & Annotations</h3>
-				<div>(few words)</div>
-				</section>
-				<section>
-				<h3>Bonus - use Angular 1.x With Decorators</h3>
-				http://plnkr.co/edit/JhHlOr?p=preview
-				https://github.com/pbastowski/angular2-now
-				</section>
+				</section> -->
 				<section>
 					<h2>What can I do in order to be ready for Angular 2.0?</h2>
 					<div>
@@ -576,6 +633,15 @@ $router.config([
 ]);
 </code></pre>
 </div>
+				</section>
+				<section>
+				<h3>Bonus - use Angular 1.x With Decorators</h3>
+				http://plnkr.co/edit/JhHlOr?p=preview
+				https://github.com/pbastowski/angular2-now
+				</section>
+				<section>
+				<h3>Decorators & Annotations</h3>
+				<div>(few words)</div>
 				</section>
 			</div>
 		</div>
