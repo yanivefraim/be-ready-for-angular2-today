@@ -141,7 +141,10 @@ body {
   overflow: auto;
   max-height: 500px;
   word-wrap: normal;
-  background: #3F3F3F;
+  background: transparent;
+  border: 5px solid #3F3F3F;
+  border-radius: 10px;
+  padding: 40px;
   color: #DCDCDC; }
 
 .reveal table {
