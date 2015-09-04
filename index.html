@@ -136,7 +136,7 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					<h2>What can I do in order to be ready for Angular 2.0?</h2>
 					<div>
 						<ol>
-							<li style="color:#13DAEC">Use Component Tree Architecture</li>
+							<li>Use Component Tree Architecture</li>
 							<li>Write Angular 1.x Components using ES2015/Typescript</li>
 							<li>Use the "New Router" (Angular 1.5)</li>
 						</ol>
@@ -494,7 +494,7 @@ import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2'
     events: ['fontSizeChange']
 })
 @View({
-    template: `<input [ng-model]="fontSize" (input)="fontSizeChange.next($event.target.value)" id="fontSize" />`,
+    template: `<input [ng-model]="fontSize" (input)="modelCahnged($event.target.value)" id="fontSize" />`,
     directives: [FORM_DIRECTIVES]
 })
 
@@ -504,13 +504,13 @@ import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2'
 export class FontSizeComponent {
     fontSize: string;
     fontSizeChange = new EventEmitter();
+
+    constructor() {
+    }
+    modelCahnged($event) {
+      this.fontSizeChange.next($event);
+    }
 }
-
-
-
-
-
-`
 					</code>
 					</pre>
 					</div>
@@ -569,7 +569,10 @@ export class FontSizeComponent {
 				<section data-background="#e4bb45">
 					<h2 style="color: black;">Recap - ES2015/TS</h2>
 					<div style="color: black;">
-					<p>We migrated our ES5 javascript components to use modern ES2015/TypeScript. It now has:</p>
+					<ul>
+						<li>We migrated our ES5 javascript components to use modern ES2015/TypeScript</li>
+						<li>It made it easier to migrate to Angular 2.0 components</li>
+					</ul>
 					</div>
 				</section>
 				<section>
