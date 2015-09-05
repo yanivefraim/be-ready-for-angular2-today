@@ -298,7 +298,7 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					<h2 style="color: #13DAEC">Main Application Component</h2>
 					<pre><code data-trim contenteditable style="font-size: 1.6em;">
 <div class="left-sidebar">
-  <theme-editor-panel-component on-font-size-change="ctrl.onFontSizeChange(fontSize)" on-font-color-change="ctrl.onFontColorChange(fontColor)" on-font-family-change="ctrl.onFontFamilyChange(fontFamily)" font-size="{{ctrl.fontSize}}" font-family="{{ctrl.fontFamily}}" font-color="{{ctrl.fontColor}}"></theme-editor-panel-component>
+  <theme-editor-panel-component font-size="{{ctrl.fontSize}}" font-family="{{ctrl.fontFamily}}" font-color="{{ctrl.fontColor}}" on-font-size-change="ctrl.onFontSizeChange(fontSize)" on-font-color-change="ctrl.onFontColorChange(fontColor)" on-font-family-change="ctrl.onFontFamilyChange(fontFamily)"></theme-editor-panel-component>
 </div>
 <div class="main panel panel-primary">
   <theme-preview-panel-component font-size="{{ctrl.fontSize}}" font-family="{{ctrl.fontFamily}}" font-color="{{ctrl.fontColor}}"></theme-preview-panel-component>
