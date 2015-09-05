@@ -127,8 +127,8 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 							<li style="color: #ff4b5e"><span style="color: #eee">Speed & Performance</li>
 							<li style="color: #ff4b5e"><span style="color: #eee">Support for Web Components</li>
 							<li style="color: #ff4b5e"><span style="color: #eee">Shadow DOM</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Can run outside of the browser - decoupled from DOM</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Less opinionated framework- write plain Javascript</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Can run outside of the browser</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Less opinionated framework</li>
 						</ul>
 					</div>
 				</section>
@@ -255,7 +255,7 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 				</section>
 				<section>
 					<h2 style="color: #13DAEC">"Regular" Angular 1.x (Demo - Theme Creator)</h3>
-					<pre><code style="max-height: 600px;font-size: 1.1em;" data-trim contenteditable>
+					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 <div ng-controller="MainCtrl as ctrl">
   <div class="left-sidebar">
     <select class="form-control" ng-model="ctrl.fontFamily" ng-options="font for font in ctrl.fonts"></select>
@@ -398,14 +398,14 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 				<section>
 					<h2 style="color:#e4bb45">A Tiny TypeScript Example</h2>
 					<div style="display: inline-block;width: 40%;vertical-align: top;">
-						<pre><code data-trim contenteditable>
+						<pre><code data-trim contenteditable style="font-size: 1.5em;">
 //TypeScript
 var bar: string;
 var func: Function;
 						</code></pre>
 					</div>
 					<div style="display: inline-block;width: 40%;margin-left: 40px;vertical-align: top;">
-						<pre><code data-trim contenteditable>
+						<pre><code data-trim contenteditable style="font-size: 1.5em;">
 //Compiled to
 var bar;
 var func;
@@ -414,7 +414,7 @@ var func;
 				</section>
 				<section>
 					<h2 style="color:#e4bb45">Convert our "Font Size" directive to ES2015</h2>
-					<pre><code data-trim contenteditable>
+					<pre><code data-trim contenteditable style="font-size: 1.5em;">
 import angular from 'angular';
 class FontSizeComponent {
   /* @ngInject */
@@ -443,7 +443,7 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 				</section>
 								<section>
 					<h2 style="color:#e4bb45">Convert our "Font Size" directive to TypeScript</h2>
-					<pre><code data-trim contenteditable style="line-height: 2.1em">
+					<pre><code data-trim contenteditable style="line-height: 1.5em; font-size: 1.5em;">
 import angular from 'angular';
 class FontSizeComponent {
   fontSize: string;
@@ -471,7 +471,7 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 	</code>
 </pre>
 				</section>
-				<section>
+				<!-- <section>
 					<h2 style="color:#e4bb45">Lets take it one step further</h2>
 					<div style="display: inline-block;width: 40%;vertical-align: top;">
 					<div>Angular 1.X</div>
@@ -539,10 +539,10 @@ export class FontSizeComponent {
 					</pre>
 					</div>
 <a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
-				</section>
-							<!-- 	<section>
-					<h3>Angular2 'FontSize' Component</h3>
-					<pre><code data-trim contenteditable style="line-height: 1.6em; font-size: 1.1em;">
+				</section> -->
+								<section>
+					<h3>Lets take it one step further - Angular2 'FontSize' Component</h3>
+					<pre><code data-trim contenteditable style="line-height: 1.2em; font-size: 1.5em;">
 import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
 @Component({
     selector: 'font-size-component',
@@ -550,19 +550,22 @@ import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2'
     events: ['fontSizeChange']
 })
 @View({
-    template: `<input [ng-model]="fontSize" (input)="fontSizeChange.next($event.target.value)" id="fontSize" />`,
+    template: `<input [ng-model]="fontSize" (input)="modelCahnged($event.target.value)" id="fontSize" />`,
     directives: [FORM_DIRECTIVES]
 })
 export class FontSizeComponent {
     fontSize: string;
     fontSizeChange = new EventEmitter();
-}
 
+    modelCahnged($event) {
+      this.fontSizeChange.next($event);
+    }
+}
 					</code>
 					</pre>
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
 				</section>
-				<section>
+				<!-- <section>
 					<h3>Angular2 'FontSize' Component, Option 2</h3>
 					<pre><code data-trim contenteditable style="line-height: 1.6em">
 import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
