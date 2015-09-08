@@ -328,7 +328,7 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					<pre><code data-trim contenteditable  style="line-height: 2em;font-size: 1.15em;">
   directive('fontSizeComponent', function() {
  return {
-  template: '<input ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>',
+  template: '<input ng-model="ctrl.fontSize" ng-change="ctrl.modelChanged()"/>',
   scope: {},
   bindToController: {
    fontSize: "@",
@@ -337,7 +337,7 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
   controllerAs: 'ctrl',
   controller: function() {
    var that = this;
-   this.fontSizeChangedEvent = function() {
+   this.modelChanged = function() {
     that.fontSizeChanged({fontSize: that.fontSize});
    };
   }
@@ -420,14 +420,14 @@ class FontSizeComponent {
   /* @ngInject */
   constructor() {
   }
-  fontSizeChangedEvent() {
+  modelChanged() {
     this.fontSizeChanged({fontSize: this.fontSize});
   }
 }
 export default angular.module('themeCreatorFontSizeComponentModule', [])
 .directive('fontSizeComponent', function() {
   return {
-    template: `<input ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>`,
+    template: `<input ng-model="ctrl.fontSize" ng-change="ctrl.modelChanged()"/>`,
     scope: {
       fontSize: "@",
       fontSizeChanged: "&"
@@ -451,14 +451,14 @@ class FontSizeComponent {
   /* @ngInject */
   constructor() {
   }
-  fontSizeChangedEvent() {
+  modelChanged() {
     this.fontSizeChanged({fontSize: this.fontSize});
   }
 }
 export default angular.module('themeCreatorFontSizeComponentModule', [])
   .directive('fontSizeComponent', function() {
     return {
-      template: `<input ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>`,
+      template: `<input ng-model="ctrl.fontSize" ng-change="ctrl.modelChanged()"/>`,
       scope: {
         fontSize: "@",
         fontSizeChanged: "&"
@@ -518,7 +518,7 @@ import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2'
     events: ['fontSizeChange']
 })
 @View({
-    template: `<input [ng-model]="fontSize" (input)="modelCahnged($event.target.value)" id="fontSize" />`,
+    template: `<input [ng-model]="fontSize" (input)="modelChanged($event.target.value)" id="fontSize" />`,
     directives: [FORM_DIRECTIVES]
 })
 
@@ -531,7 +531,7 @@ export class FontSizeComponent {
 
     constructor() {
     }
-    modelCahnged($event) {
+    modelChanged($event) {
       this.fontSizeChange.next($event);
     }
 }
@@ -550,14 +550,14 @@ import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2'
     events: ['fontSizeChange']
 })
 @View({
-    template: `<input [ng-model]="fontSize" (input)="modelCahnged($event.target.value)" id="fontSize" />`,
+    template: `<input [ng-model]="fontSize" (input)="modelChanged($event.target.value)" id="fontSize" />`,
     directives: [FORM_DIRECTIVES]
 })
 export class FontSizeComponent {
     fontSize: string;
     fontSizeChange = new EventEmitter();
 
-    modelCahnged($event) {
+    modelChanged($event) {
       this.fontSizeChange.next($event);
     }
 }
