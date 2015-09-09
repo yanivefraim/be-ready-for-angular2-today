@@ -653,7 +653,7 @@ export class FontSizeComponent {
 						</ul>
 					</div>
 				</section>
-				<section>
+				<!-- <section>
 					<h2 style="color:#4faa82">Settings - based on conventions</h3>
 					<div style="display: inline-block;width: 40%;vertical-align: top;">
   <span>ui-route</span>
@@ -679,7 +679,33 @@ $router.config([
 ]);
 </code></pre>
 </div>
-				</section>
+				</section> -->
+				<section>
+					<h2 style="color:#4faa82">Settings - Angular 1.X</h2>
+						<div>
+							<pre><code data-trim contenteditable style="font-size: 1.6em;">
+								app.controller('AppController', function ($router) {
+  $router.config([
+    {
+      path: '/welcome',
+      component: 'welcome'
+    }
+  ]);
+});
+							</code></pre></div></section>
+							<section>
+								<h2 style="color:#4faa82;">Settings - Angular 1.X, Based on Conventions</h2>
+								<ol style="line-height: 2em;">
+									<li>
+										Load the component template asynchronously from:
+										components/[COMPONENT_NAME]/[COMPONENT_NAME].html
+									</li>
+									<li>
+										Instantiate:
+										<div>[COMPONENT_NAME]Controller</div>
+									</li>
+								</ol>
+							</section>
 				<!-- <section>
 				<h3>Bonus - use Angular 1.x With Decorators</h3>
 				http://plnkr.co/edit/JhHlOr?p=preview
