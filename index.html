@@ -135,7 +135,7 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 				<section>
 					<h2 style="color: #ff4b5e">Migration Path? (clue: there isn't one, yet..)</h2>
 					<ul>
-						<li style="color: #ff4b5e"><span style="color: #eee">Progressively upgrade (step by step). ngUpgrade.js</li>
+						<li style="color: #ff4b5e"><span style="color: #eee">Progressively upgrade (step by step) with upgrade module</li>
 						<li style="color: #ff4b5e"><span style="color: #eee">Angular 1 module.component() Helper</li>
 						<li style="color: #ff4b5e"><span style="color: #eee">Angular 1 Annotation Support</li>
 					</ul>
@@ -146,8 +146,8 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 						<ol>
 							<li style="color: #ff4b5e"><span style="color: #eee">Move To Component Architecture</li>
 							<li style="color: #ff4b5e"><span style="color: #eee">Use Hierarchy Tree Data-Flow</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Write Angular 1.x Components using ES2015/Typescript</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Use the "New Router" (Angular 1.5)</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Write Angular 1.x Components using ES2015 / Typescript</li>
+							<!-- <li style="color: #ff4b5e"><span style="color: #eee">Use the "New Router" (Angular 1.5)</li> -->
 						</ol>
 					</div>
 				</section>
@@ -282,7 +282,7 @@ ctrl.deleteItem = function(item) {
 					<p style="font-size: 16px;text-align: left;">* Now we have 'items' as our component's input and 'on-delete' as its output. Cool!</p>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC">item-list Component</h3>
+					<h2 style="color: #13DAEC">item-list Component's Directive</h3>
 					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
 module.directive('itemList', function() {
   return {
