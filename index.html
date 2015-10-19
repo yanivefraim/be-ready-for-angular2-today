@@ -156,11 +156,11 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					<h1 style="font-size: 3.2em;">Component Architecture</h2>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC;">Component Architecture</h2>
+					<h2 style="color: #13DAEC;">Component Architecture Rules</h2>
 					<div>
 						<ul>
-							<li style="color: #13DAEC"><span style="color: #eee">A component has a well-defined public API (inputs/outputs)</li>
-							<li style="color: #13DAEC"><span style="color: #eee">Immutable - does not change data it doesn't own</li>
+							<li style="color: #13DAEC"><span style="color: #eee">Component has a well-defined public API (inputs/outputs)</li>
+							<li style="color: #13DAEC"><span style="color: #eee">Component is immutable - does not change data which it doesn't own</li>
 							<li style="color: #13DAEC"><span style="color: #eee">Isolated - no side effects / external references</li>
 						</ul>
 					</div>
@@ -176,7 +176,8 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					</div>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC">Moving To Components - before</h3>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<h2 style="color: #13DAEC">Let's Take This Piece Of HTML</h3>
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 <div ng-controller="MainCtrl as mainCtrl">
   <h1>Items</h1>
@@ -192,7 +193,8 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					</code></pre>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC">Moving To Components - before</h3>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<h2 style="color: #13DAEC">And Its Controller</h3>
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 function MainController() {
   var ctrl = this;
@@ -206,13 +208,78 @@ function MainController() {
 					</code></pre>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC">Moving To Components - after</h3>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<h2 style="color: #13DAEC">And Create an 'item-list' Component</h3>
+					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
+<div ng-controller="MainCtrl as mainCtrl">
+  <h1>Items</h1>
+  <item-list items="mainCtrl.items"></item-list>
+</div>
+					</code></pre>
+					<p style="font-size: 16px;text-align: left;">* 'items' is our component's input</p>
+				</section>
+				<section>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<h2 style="color: #13DAEC">item-list Component's Directive</h3>
+					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
+module.directive('itemList', function() {
+  return {
+    scope: {},
+    controller: function() {
+      var ctrl = this;
+      ctrl.deleteItem = function(item) {
+        var idx = ctrl.items.indexOf(item);
+        if (idx >= 0) {
+          ctrl.items.splice(idx, 1);
+        }
+      };
+    },
+    controllerAs: 'itemListCtrl',
+    bindToController: {
+      items: '='
+    },
+    templateUrl: 'item-list.html'
+  };
+});
+					</code></pre>
+				</section>
+				<section>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<h2 style="color: #13DAEC">item-list Component's Template</h3>
+					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
+<ul>
+  <li ng-repeat="item in itemListCtrl.items">
+    {{item.text}}
+  </li>
+  <button ng-click="itemListCtrl.deleteItem()">
+  	Delete
+  </button>
+</ul>
+					</code></pre>
+				</section>
+				<section>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<h2 style="color: #13DAEC">But Wait - What Is Wrong Here?</h3>
+					<p>(hint:'item-list' is mutating data it doesn't own) </p>
+					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
+ctrl.deleteItem = function(item) {
+  var idx = ctrl.items.indexOf(item);
+  if (idx >= 0) {
+    ctrl.items.splice(idx, 1);
+  }
+};
+					</code></pre>
+				</section>
+				<section>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<h2 style="color: #13DAEC">Adding An Output (Event)</h3>
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 <div ng-controller="MainCtrl as mainCtrl">
   <h1>Items</h1>
   <item-list items="mainCtrl.items" on-delete="mainCtrl.onDelete(item)"></item-list>
 </div>
 					</code></pre>
+					<p style="font-size: 16px;text-align: left;">* Now we have 'items' as our component's input and 'on-delete' as its output. Cool!</p>
 				</section>
 				<section>
 					<h2 style="color: #13DAEC">item-list Component</h3>
@@ -236,27 +303,14 @@ module.directive('itemList', function() {
 });
 					</code></pre>
 				</section>
-				<section>
-					<h2 style="color: #13DAEC">item-list Component's Template</h3>
-					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
-<ul>
-  <li ng-repeat="item in itemListCtrl.items">
-    {{item.text}}
-  </li>
-  <button ng-click="itemListCtrl.deleteItem()">
-  	Delete
-  </button>
-</ul>
-					</code></pre>
-				</section>
 				<section data-background="#13DAEC">
 					<h2 style="color: black;">Recap - item-list Component</h2>
 					<div style="color: black;">
 						<ul>
-							<li>Well defined API - inputs/outputs</li>
-							<li>No shared mutable state - immutable</li>
-							<li>No side effects - isolated</li>
-							<li>State is well known - predictable</li>
+							<li>Component now has a well defined API</li>
+							<li>No shared mutable state (immutable)</li>
+							<li>No side effects / external references (isolated)</li>
+							<li>State is well known (predictable)</li>
 						</ul>
 					</div>
 				</section>
