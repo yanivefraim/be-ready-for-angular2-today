@@ -144,7 +144,8 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					<h2 style="color: #ff4b5e">What can I do in order to be ready for Angular 2.0?</h2>
 					<div>
 						<ol>
-							<li style="color: #ff4b5e"><span style="color: #eee">Use Component Tree Architecture</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Move To Component Architecture</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Use Hierarchy Tree Data-Flow</li>
 							<li style="color: #ff4b5e"><span style="color: #eee">Write Angular 1.x Components using ES2015/Typescript</li>
 							<li style="color: #ff4b5e"><span style="color: #eee">Use the "New Router" (Angular 1.5)</li>
 						</ol>
@@ -152,7 +153,112 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 				</section>
 				<section data-background="#13DAEC">
 					<h1 style="font-size: 5em;">01</h1>
-					<h1 style="font-size: 3.2em;">Component Tree Architecture</h2>
+					<h1 style="font-size: 3.2em;">Component Architecture</h2>
+				</section>
+				<section>
+					<h2 style="color: #13DAEC;">Component Architecture</h2>
+					<div>
+						<ul>
+							<li style="color: #13DAEC"><span style="color: #eee">A component has a well-defined public API (inputs/outputs)</li>
+							<li style="color: #13DAEC"><span style="color: #eee">Immutable - does not change data it doesn't own</li>
+							<li style="color: #13DAEC"><span style="color: #eee">Isolated - no side effects / external references</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2 style="color: #13DAEC;">Why is it better?</h2>
+					<div>
+						<ul>
+							<li style="color: #13DAEC"><span style="color: #eee">No more scope soup / mutable shared state</li>
+							<li style="color: #13DAEC"><span style="color: #eee">Component's state is well known</li>
+							<li style="color: #13DAEC"><span style="color: #eee">Isolated - no side effects</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2 style="color: #13DAEC">Moving To Components - before</h3>
+					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
+<div ng-controller="MainCtrl as mainCtrl">
+  <h1>Items</h1>
+  <ul>
+    <li ng-repeat="item in mainCtrl.items">
+      {{item.text}}
+    </li>
+    <button ng-click="mainCtrl.deleteItem()">
+    	Delete
+    </button>
+  </ul>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<h2 style="color: #13DAEC">Moving To Components - before</h3>
+					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
+function MainController() {
+  var ctrl = this;
+  ctrl.deleteItem = function(item) {
+    var idx = ctrl.items.indexOf(item);
+    if (idx >= 0) {
+      ctrl.items.splice(idx, 1);
+    }
+  };
+}
+					</code></pre>
+				</section>
+				<section>
+					<h2 style="color: #13DAEC">Moving To Components - after</h3>
+					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
+<div ng-controller="MainCtrl as mainCtrl">
+  <h1>Items</h1>
+  <item-list items="mainCtrl.items" on-delete="mainCtrl.onDelete(item)"></item-list>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<h2 style="color: #13DAEC">item-list Component</h3>
+					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
+module.directive('itemList', function() {
+  return {
+    scope: {},
+    controller: function() {
+      var ctrl = this;
+      ctrl.deleteItem = function(item) {
+        ctrl.onDelete({item: item});
+      };
+    },
+    controllerAs: 'itemListCtrl',
+    bindToController: {
+      items: '=',
+      onDelete: '&'
+    },
+    templateUrl: 'item-list.html'
+  };
+});
+					</code></pre>
+				</section>
+				<section>
+					<h2 style="color: #13DAEC">item-list Component's Template</h3>
+					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
+<ul>
+  <li ng-repeat="item in itemListCtrl.items">
+    {{item.text}}
+  </li>
+  <button ng-click="itemListCtrl.deleteItem()">
+  	Delete
+  </button>
+</ul>
+					</code></pre>
+				</section>
+				<section data-background="#13DAEC">
+					<h2 style="color: black;">Recap - item-list Component</h2>
+					<div style="color: black;">
+						<ul>
+							<li>Well defined API - inputs/outputs</li>
+							<li>No shared mutable state - immutable</li>
+							<li>No side effects - isolated</li>
+							<li>State is well known - predictable</li>
+						</ul>
+					</div>
 				</section>
 				<section>
 					<h2 style="color: #13DAEC">First things first...</h2>
@@ -170,42 +276,6 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 						<img src="./images/parent_child.png" width="100%" style="margin: 0;background: none;border: none;box-shadow: none;" />
 					</div>
 				</section>
-				<!-- <section>
-					<h3>Angular 2.0 Template Syntax/Semantics</h3>
-					<div class="stretch">
-						<table style="border: 1px solid">
-						<thead>
-							<tr>
-								<th></th>
-								<th>Short</th>
-								<th>Canonical</th>
-								<th>Javascript</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td style="background-color: #A9A9A9">Property Binding</td>
-								<td>[prop]="exp"</td>
-								<td>bind-prop="exp"</td>
-								<td>e['prop'] = exp;</td>
-							</tr>
-							<tr>
-								<td style="background-color: #A9A9A9">Event Binding</td>
-								<td>(event)="stmt"</td>
-								<td>on-event="stmt"</td>
-								<td>e.addEventListener('event', stmt);</td>
-							</tr>
-							<tr>
-								<td style="background-color: #A9A9A9">Ref Binding</td>
-								<td>#x</td>
-								<td>var-x</td>
-								<td>var x = e;</td>
-							</tr>
-						</tbody>
-					</table>
-					</div>
-
-				</section> -->
 				<section>
 					<h2 style="color: #13DAEC;">Why Is It Better</h2>
 					<div>
