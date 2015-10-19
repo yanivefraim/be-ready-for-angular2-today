@@ -159,7 +159,8 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					<h2 style="color: #13DAEC;">Component Architecture Rules</h2>
 					<div>
 						<ul>
-							<li style="color: #13DAEC"><span style="color: #eee">Component has a well-defined public API (inputs/outputs)</li>
+							<li style="color: #13DAEC"><span style="color: #eee">Component has a well-defined public API of inputs and outputs
+</li>
 							<li style="color: #13DAEC"><span style="color: #eee">Component is immutable - does not change data which it doesn't own</li>
 							<li style="color: #13DAEC"><span style="color: #eee">Isolated - no side effects / external references</li>
 						</ul>
@@ -343,7 +344,7 @@ module.directive('itemList', function() {
 							<li style="color: #4faa82"><span style="color: #eee">Predictable</li>
 							<li style="color: #4faa82"><span style="color: #eee">Component's state is well known</li> -->
 							<li style="color: #4faa82"><span style="color: #eee">More explicit data-flow</li>
-							<li style="color: #4faa82"><span style="color: #eee">TBD...</li>
+							<li style="color: #4faa82"><span style="color: #eee">Well defined application state</li>
 							<!-- <li>Immutable Data - better performance and predictability</li> -->
 							<!-- <li>Component isolation</li> -->
 						</ul>
@@ -606,17 +607,15 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 					<pre><code data-trim contenteditable style="line-height: 1.2em; font-size: 1.5em;">
 import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
 @Component({
-    selector: 'font-size-component',
-    inputs: ['fontSize'],
-    outputs: ['fontSizeChange']
+    selector: 'font-size-component'
 })
 @View({
     template: `<input [ng-model]="fontSize" (input)="modelChanged($event.target.value)" id="fontSize" />`,
     directives: [FORM_DIRECTIVES]
 })
 export class FontSizeComponent {
-    fontSize: string;
-    fontSizeChange: EventEmitter = new EventEmitter();
+    @Input() fontSize: string;
+    @Output() fontSizeChange: EventEmitter = new EventEmitter();
 
     modelChanged($event) {
       this.fontSizeChange.next($event);
