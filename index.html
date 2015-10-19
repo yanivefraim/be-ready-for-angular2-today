@@ -144,10 +144,10 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					<h2 style="color: #ff4b5e">What can I do in order to be ready for Angular 2.0?</h2>
 					<div>
 						<ol>
-							<li style="color: #ff4b5e"><span style="color: #eee">Move To Component Architecture</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Use Hierarchy Tree Data-Flow</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Write Angular 1.x Components using ES2015 / Typescript</li>
-							<!-- <li style="color: #ff4b5e"><span style="color: #eee">Use the "New Router" (Angular 1.5)</li> -->
+							<li style="color: #ff4b5e"><span style="color: #eee">Move to component architecture</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Use hierarchy tree data-flow</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Write Angular 1.x components using ES2015 / Typescript</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Use the "New Router" (Angular 1.5)</li>
 						</ol>
 					</div>
 				</section>
@@ -282,6 +282,7 @@ ctrl.deleteItem = function(item) {
 					<p style="font-size: 16px;text-align: left;">* Now we have 'items' as our component's input and 'on-delete' as its output. Cool!</p>
 				</section>
 				<section>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
 					<h2 style="color: #13DAEC">item-list Component's Directive</h3>
 					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
 module.directive('itemList', function() {
@@ -314,30 +315,35 @@ module.directive('itemList', function() {
 						</ul>
 					</div>
 				</section>
+				<section data-background="#4faa82">
+					<h1 style="font-size: 5em;">02</h1>
+					<h1>Hierarchy Tree Data-Flow</h1>
+				</section>
 				<section>
-					<h2 style="color: #13DAEC">First things first...</h2>
+					<h2 style="color: #4faa82">First things first...</h2>
 					<h2>Component Tree Structure !== Directory Tree Structure!!</h2>
 				</section>
 				<section>
-					<h1 style="color: #13DAEC;">Component Tree Architecture</h1>
+					<h1 style="color: #4faa82;">Component Tree Architecture</h1>
 					<div>
 						<img src="./images/app_structure.png" width="100%" style="margin: 0;background: none;border: none;box-shadow: none;" />
 					</div>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC;">Angular 2.0 Component Tree Structure</h2>
+					<h2 style="color: #4faa82;">Angular 2.0 Component Tree Structure</h2>
 					<div>
 						<img src="./images/parent_child.png" width="100%" style="margin: 0;background: none;border: none;box-shadow: none;" />
 					</div>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC;">Why Is It Better</h2>
+					<h2 style="color: #4faa82;">Why Is It Better</h2>
 					<div>
 						<ul>
-							<li style="color: #13DAEC"><span style="color: #eee">A component has a well-defined public API</li>
-							<li style="color: #13DAEC"><span style="color: #eee">Predictable</li>
-							<li style="color: #13DAEC"><span style="color: #eee">Component's state is well known</li>
-							<li style="color: #13DAEC"><span style="color: #eee">More explicit data-flow</li>
+							<!-- <li style="color: #4faa82"><span style="color: #eee">A component has a well-defined public API</li>
+							<li style="color: #4faa82"><span style="color: #eee">Predictable</li>
+							<li style="color: #4faa82"><span style="color: #eee">Component's state is well known</li> -->
+							<li style="color: #4faa82"><span style="color: #eee">More explicit data-flow</li>
+							<li style="color: #4faa82"><span style="color: #eee">TBD...</li>
 							<!-- <li>Immutable Data - better performance and predictability</li> -->
 							<!-- <li>Component isolation</li> -->
 						</ul>
@@ -356,7 +362,7 @@ module.directive('itemList', function() {
     			</aside>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC;">React - the good parts</h2>
+					<h2 style="color: #4faa82;">React - the good parts</h2>
 					<h4>(example - "Thinking in React")</h4>
 					<div>
 						<img src="./images/thinking-in-react-components.png" />
@@ -371,14 +377,14 @@ module.directive('itemList', function() {
 					<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1</a>
 				</section> -->
 				<section style="top: 42px; display: block;">
-					<h2 style="color: #13DAEC;">Lets do it ourselves</h2>
+					<h2 style="color: #4faa82;">Lets do it ourselves</h2>
 					<div style="height: 420px;width: 100%;">
 						<iframe src="http://yanivefraim.github.io/angular-theme-creator-demo" style="height: 100%;width: 100%;"></iframe>
 					</div>
 					<div><img src="./images/GitHub-Mark.png" style="width: 30px; margin-right: 10px;margin-top: 5px;vertical-align: middle;"><a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1</a></div>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC">"Regular" Angular 1.x (Demo - Theme Creator)</h3>
+					<h2 style="color: #4faa82">"Regular" Angular 1.x (Demo - Theme Creator)</h3>
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 <div ng-controller="MainCtrl as ctrl">
   <div class="left-sidebar">
@@ -395,31 +401,31 @@ module.directive('itemList', function() {
 					</code></pre>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC">Step 1 - Break the Code into Components</h2>
+					<h2 style="color: #4faa82">Step 1 - Break the Code into Components</h2>
 					<div>
 						<img src="./images/theme_creator_blocks2.png" />
 					</div>
 				</section>
 				<!-- <section>
-					<h2 style="color: #13DAEC">Step 1 - Break the Code into Components</h2>
+					<h2 style="color: #4faa82">Step 1 - Break the Code into Components</h2>
 					<div>
 						<ul>
-							<li style="color: #13DAEC"><span style="color: #eee">Application component</li>
-							<li style="color: #13DAEC"><span style="color: #eee">Left panel component</li>
-							<li style="color: #13DAEC"><span style="color: #eee">Input control components (font size etc.)</li>
-							<li style="color: #13DAEC"><span style="color: #eee">Preview component</li>
+							<li style="color: #4faa82"><span style="color: #eee">Application component</li>
+							<li style="color: #4faa82"><span style="color: #eee">Left panel component</li>
+							<li style="color: #4faa82"><span style="color: #eee">Input control components (font size etc.)</li>
+							<li style="color: #4faa82"><span style="color: #eee">Preview component</li>
 						</ul>
 					</div>
 				</section> -->
 				<section>
-					<h2 style="color: #13DAEC">Step 2 - Create a Hierarchy Tree</h2>
+					<h2 style="color: #4faa82">Step 2 - Create a Hierarchy Tree</h2>
 					<div>
 					<img src="./images/editor_tree.png" style="margin-right: 80px; margin-top: -30px;"/>
 					</div>
 					<div><img src="./images/GitHub-Mark.png" style="width: 30px; margin-right: 10px;margin-top: 5px;vertical-align: middle;"><a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1-2" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo/tree/angular1-2</a></div>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC">Main Application Component</h2>
+					<h2 style="color: #4faa82">Main Application Component</h2>
 					<pre><code data-trim contenteditable style="font-size: 1.6em;">
 <div class="left-sidebar">
   <theme-editor-panel-component font-size="{{ctrl.fontSize}}" font-family="{{ctrl.fontFamily}}" font-color="{{ctrl.fontColor}}" on-font-size-change="ctrl.onFontSizeChange(fontSize)" on-font-color-change="ctrl.onFontColorChange(fontColor)" on-font-family-change="ctrl.onFontFamilyChange(fontFamily)"></theme-editor-panel-component>
@@ -430,7 +436,7 @@ module.directive('itemList', function() {
 					</code></pre>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC;">Theme Editor Component</h2>
+					<h2 style="color: #4faa82;">Theme Editor Component</h2>
 					<pre><code data-trim contenteditable style="font-size: 1.6em;">
 <div class="control-group">
   <label class="control-label">Font Family</label>
@@ -448,7 +454,7 @@ module.directive('itemList', function() {
 </pre>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC">Font Size component</h2>
+					<h2 style="color: #4faa82">Font Size component</h2>
 					<pre><code data-trim contenteditable  style="line-height: 2em;font-size: 1.15em;">
   directive('fontSizeComponent', function() {
  return {
@@ -471,7 +477,7 @@ module.directive('itemList', function() {
 	</code>
 </pre>
 				</section>
-				<section data-background="#13DAEC">
+				<section data-background="#4faa82">
 					<h2 style="color: black;">Recap - our app is now</h2>
 					<div style="color: black;">
 						<ol>
@@ -492,7 +498,7 @@ module.directive('itemList', function() {
 					</div>
 				</section> -->
 				<section data-background="#e4bb45">
-					<h1 style="font-size: 5em;">02</h1>
+					<h1 style="font-size: 5em;">03</h1>
 					<h1>Write Angular 1.x Components using ES2015/Typescript</h1>
 				</section>
 				<section>
@@ -538,7 +544,7 @@ var func;
 				</section>
 				<section>
 					<h2 style="color:#e4bb45">Convert our "Font Size" directive to ES2015</h2>
-					<pre><code data-trim contenteditable style="font-size: 1.5em;">
+					<pre><code data-trim contenteditable style="font-size: 1.2em;line-height: 1.3em">
 import angular from 'angular';
 class FontSizeComponent {
   /* @ngInject */
@@ -567,7 +573,7 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 				</section>
 								<section>
 					<h2 style="color:#e4bb45">Convert our "Font Size" directive to TypeScript</h2>
-					<pre><code data-trim contenteditable style="line-height: 1.5em; font-size: 1.5em;">
+					<pre><code data-trim contenteditable style="font-size: 1.2em;line-height: 1.3em">
 import angular from 'angular';
 class FontSizeComponent {
   fontSize: string;
@@ -595,83 +601,14 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 	</code>
 </pre>
 				</section>
-				<!-- <section>
-					<h2 style="color:#e4bb45">Lets take it one step further</h2>
-					<div style="display: inline-block;width: 40%;vertical-align: top;">
-					<div>Angular 1.X</div>
-					<pre><code data-trim contenteditable  style="font-size: 0.8em;line-height: 1.5em">
-import angular from 'angular';
-export default angular.module('themeCreatorFontSizeComponentModule', [])
-
-.directive('fontSizeComponent', function() {
-  return {
-    scope: {
-      fontSize: "@",
-      fontSizeChanged: "&"
-    },
-    template: `<input ng-model="ctrl.fontSize" ng-change="ctrl.fontSizeChangedEvent()"/>`,
-    bindToController: true,
-    controllerAs: 'ctrl',
-    controller: FontSizeComponent
-  };
-});
-
-class FontSizeComponent {
-  fontSize: string;
-  fontSizeChanged: Function;
-  /* @ngInject */
-  constructor() {
-  }
-  fontSizeChangedEvent() {
-    this.fontSizeChanged({fontSize: this.fontSize});
-  }
-}
-
-	</code>
-</pre>
-					</div>
-					<div style="display: inline-block;width: 40%;margin-left: 40px;vertical-align: top;">
-					<div>Angular 2.0</div>
-					<pre><code data-trim contenteditable style="font-size: 0.8em;line-height: 1.5em">
-import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
-
-
-@Component({
-    selector: 'font-size-component',
-    properties: ['fontSize'],
-    events: ['fontSizeChange']
-})
-@View({
-    template: `<input [ng-model]="fontSize" (input)="modelChanged($event.target.value)" id="fontSize" />`,
-    directives: [FORM_DIRECTIVES]
-})
-
-
-
-
-export class FontSizeComponent {
-    fontSize: string;
-    fontSizeChange = new EventEmitter();
-
-    constructor() {
-    }
-    modelChanged($event) {
-      this.fontSizeChange.next($event);
-    }
-}
-					</code>
-					</pre>
-					</div>
-<a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a>
-				</section> -->
 								<section>
 					<h2 style="color:#e4bb45">Let's write it in Angular 2</h2>
 					<pre><code data-trim contenteditable style="line-height: 1.2em; font-size: 1.5em;">
 import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
 @Component({
     selector: 'font-size-component',
-    properties: ['fontSize'],
-    events: ['fontSizeChange']
+    inputs: ['fontSize'],
+    outputs: ['fontSizeChange']
 })
 @View({
     template: `<input [ng-model]="fontSize" (input)="modelChanged($event.target.value)" id="fontSize" />`,
@@ -737,7 +674,7 @@ export class FontSizeComponent {
 					</div>
 				</section> -->
 				<section data-background="#4faa82">
-					<h1 style="font-size: 5em;">03</h1>
+					<h1 style="font-size: 5em;">04</h1>
 					<h1>Use the "New Router"</h1>
 				</section>
 				<section>
