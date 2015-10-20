@@ -306,7 +306,41 @@ ctrl.deleteItem = function(item) {
 				</section>
 				<section>
 					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
-					<h2 style="color: #13DAEC">Adding An Output (Event)</h3>
+					<h2 style="color: #13DAEC">Adding An Output Event</h3>
+					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
+module.directive('itemList', function() {
+  return {
+    scope: {},
+    controller: function() {
+      var ctrl = this;
+      ctrl.deleteItem = function(item) {
+        ctrl.onDelete({item: item});
+      };
+    },
+    controllerAs: 'itemListCtrl',
+    bindToController: {
+      items: '=',
+      onDelete: '&'
+    },
+    templateUrl: 'item-list.html'
+  };
+});
+					</code></pre>
+				</section>
+				<section>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<h2 style="color: #13DAEC">And We register To The Output Event</h3>
+					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
+<div ng-controller="MainCtrl as mainCtrl">
+  <h1>Items</h1>
+  <item-list items="mainCtrl.items" on-delete="mainCtrl.onDelete(item)"></item-list>
+</div>
+					</code></pre>
+					<p style="font-size: 16px;text-align: left;">* We have 'items' as our component's input and 'on-delete' as its output.</p>
+				</section>
+				<section>
+					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<h2 style="color: #13DAEC">We Now Have A Well Defined Component</h3>
 					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
 module.directive('itemList', function() {
   return {
@@ -329,17 +363,6 @@ module.directive('itemList', function() {
 					<div style="position: fixed;top: 280px;right:50px;">  <-- Logic</div>
 <div style="position: fixed;top: 450px;right:50px;">  <-- Interface</div>
 <div style="position: fixed;top: 530px;right:50px;">  <-- View</div>
-				</section>
-				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
-					<h2 style="color: #13DAEC">Cool! Now We Have A Well Defined Public API</h3>
-					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
-<div ng-controller="MainCtrl as mainCtrl">
-  <h1>Items</h1>
-  <item-list items="mainCtrl.items" on-delete="mainCtrl.onDelete(item)"></item-list>
-</div>
-					</code></pre>
-					<p style="font-size: 16px;text-align: left;">* We have 'items' as our component's input and 'on-delete' as its output.</p>
 				</section>
 				<section data-background="#13DAEC">
 					<h2 style="color: black;">Recap - item-list Component</h2>
