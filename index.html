@@ -231,6 +231,7 @@ export class FontSizeComponent {
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 function MainController() {
   var ctrl = this;
+  ctrl.items = [{title: 'title 1', text: 'item 1'}, {...}];
   ctrl.deleteItem = function(item) {
     var idx = ctrl.items.indexOf(item);
     if (idx >= 0) {
