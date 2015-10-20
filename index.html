@@ -144,16 +144,48 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					<h2 style="color: #ff4b5e">What can I do in order to be ready for Angular 2.0?</h2>
 					<div>
 						<ol>
-							<li style="color: #ff4b5e"><span style="color: #eee">Move to component architecture</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Move towards component architecture</li>
 							<li style="color: #ff4b5e"><span style="color: #eee">Use hierarchy tree data-flow</li>
 							<li style="color: #ff4b5e"><span style="color: #eee">Write Angular 1.x components using ES2015 / Typescript</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Use the "New Router" (Angular 1.5)</li>
+							<!-- <li style="color: #ff4b5e"><span style="color: #eee">Use the "New Router" (Angular 1.5)</li> -->
 						</ol>
 					</div>
 				</section>
 				<section data-background="#13DAEC">
 					<h1 style="font-size: 5em;">01</h1>
 					<h1 style="font-size: 3.2em;">Component Architecture</h2>
+				</section>
+				<section>
+					<h2 style="color: #13DAEC;">What Is A Component</h2>
+					<h3>An atomic piece of UI that is composable and reusable.
+							</h3>
+				</section>
+				<section>
+					<h2 style="color: #13DAEC;">An Angular 2.0 Component</h2>
+					<pre><code data-trim contenteditable style="line-height: 1.2em; font-size: 1.5em;">
+import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
+@Component({
+    selector: 'font-size-component',
+    inputs: ['fontSize'],
+    outputs: ['fontSizeChange']
+})
+@View({
+    template: `<input [ng-model]="fontSize" id="fontSize" />`,
+    directives: [FORM_DIRECTIVES]
+})
+export class FontSizeComponent {
+    fontSize: string;
+    fontSizeChange: EventEmitter = new EventEmitter();
+
+    modelChanged($event) {
+      this.fontSizeChange.next($event);
+    }
+}
+					</code>
+					</pre>
+					<div style="position: fixed;top: 230px;right:50px;">  <-- Interface</div>
+<div style="position: fixed;top: 350px;right:50px;">  <-- View</div>
+<div style="position: fixed;top: 520px;right:50px;">  <-- Logic</div>
 				</section>
 				<section>
 					<h2 style="color: #13DAEC;">Component Architecture Rules</h2>
@@ -260,7 +292,7 @@ module.directive('itemList', function() {
 				</section>
 				<section>
 					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
-					<h2 style="color: #13DAEC">But Wait - What Is Wrong Here?</h3>
+					<h2 style="color: #13DAEC">Cool! But Wait - What Is Wrong Here?</h3>
 					<p>(hint:'item-list' is mutating data it doesn't own) </p>
 					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
 ctrl.deleteItem = function(item) {
@@ -304,6 +336,9 @@ module.directive('itemList', function() {
   };
 });
 					</code></pre>
+					<div style="position: fixed;top: 280px;right:50px;">  <-- Logic</div>
+<div style="position: fixed;top: 450px;right:50px;">  <-- Interface</div>
+<div style="position: fixed;top: 530px;right:50px;">  <-- View</div>
 				</section>
 				<section data-background="#13DAEC">
 					<h2 style="color: black;">Recap - item-list Component</h2>
@@ -340,13 +375,9 @@ module.directive('itemList', function() {
 					<h2 style="color: #4faa82;">Why Is It Better</h2>
 					<div>
 						<ul>
-							<!-- <li style="color: #4faa82"><span style="color: #eee">A component has a well-defined public API</li>
-							<li style="color: #4faa82"><span style="color: #eee">Predictable</li>
-							<li style="color: #4faa82"><span style="color: #eee">Component's state is well known</li> -->
-							<li style="color: #4faa82"><span style="color: #eee">More explicit data-flow</li>
-							<li style="color: #4faa82"><span style="color: #eee">Well defined application state</li>
-							<!-- <li>Immutable Data - better performance and predictability</li> -->
-							<!-- <li>Component isolation</li> -->
+							<li style="color: #4faa82"><span style="color: #eee">Explicit data-flow</li>
+							<li style="color: #4faa82"><span style="color: #eee">Well nkown application state</li>
+							<li style="color: #4faa82"><span style="color: #eee">No dependencies</li>
 						</ul>
 					</div>
 					<aside class="notes">
@@ -523,6 +554,7 @@ module.directive('itemList', function() {
 							<li style="color: #e4bb45"><span style="color: #eee">ES2015 superset (Transpiles to good old Javascript)</li>
 							<li style="color: #e4bb45"><span style="color: #eee">Type safe for development time</li>
 							<li style="color: #e4bb45"><span style="color: #eee">Angular 2.0 is written in Typescript</li>
+							<li style="color: #e4bb45"><span style="color: #eee">Better tooling</li>
 						</ul>
 					</div>
 				</section>
@@ -571,6 +603,9 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 	</code>
 </pre>
 <div><img src="./images/GitHub-Mark.png" style="width: 30px; margin-right: 10px;margin-top: 5px;vertical-align: middle;"><a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo-es2015" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo-es2015</a></div>
+<!-- <div style="position: fixed;top: 250px;right:50px;">  <-- Logic</div>
+<div style="position: fixed;top: 445px;right:50px;">  <-- View</div>
+<div style="position: fixed;top: 520px;right:50px;">  <-- Interface</div> -->
 				</section>
 								<section>
 					<h2 style="color:#e4bb45">Convert our "Font Size" directive to TypeScript</h2>
@@ -607,15 +642,17 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 					<pre><code data-trim contenteditable style="line-height: 1.2em; font-size: 1.5em;">
 import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
 @Component({
-    selector: 'font-size-component'
+    selector: 'font-size-component',
+    inputs: ['fontSize'],
+    outputs: ['fontSizeChange']
 })
 @View({
     template: `<input [ng-model]="fontSize" (input)="modelChanged($event.target.value)" id="fontSize" />`,
     directives: [FORM_DIRECTIVES]
 })
 export class FontSizeComponent {
-    @Input() fontSize: string;
-    @Output() fontSizeChange: EventEmitter = new EventEmitter();
+    fontSize: string;
+    fontSizeChange: EventEmitter = new EventEmitter();
 
     modelChanged($event) {
       this.fontSizeChange.next($event);
@@ -662,16 +699,6 @@ export class FontSizeComponent {
 					</ul>
 					</div>
 				</section>
-				<!-- <section>
-					<h2>What can I do in order to be ready for Angular 2.0?</h2>
-					<div>
-						<ol>
-							<li style="opacity: 0.2;">Use Component Tree Architecture</span></li>
-							<li style="opacity: 0.2;">Write Angular 1.x Components using ES2015/Typescript</li>
-							<li style="color:#4faa82">Use the "New Router" (Angular 1.5)</li>
-						</ol>
-					</div>
-				</section> -->
 				<section data-background="#4faa82">
 					<h1 style="font-size: 5em;">04</h1>
 					<h1>Use the "New Router"</h1>
@@ -713,33 +740,6 @@ export class FontSizeComponent {
 						</ul>
 					</div>
 				</section>
-				<!-- <section>
-					<h2 style="color:#4faa82">Settings - based on conventions</h3>
-					<div style="display: inline-block;width: 40%;vertical-align: top;">
-  <span>ui-route</span>
-  <pre><code data-trim contenteditable style="font-size: 1.4em;">
-  $stateProvider
-.state('IndexComp', {
-  url: '/home',
-  templateUrl: 'home.tpl.html',
-  controller: 'HomeController',
-  controllerAs: 'home'
-})
-		</code></pre>
-
-</div>
-<div style="display: inline-block;width: 40%;margin-left: 20px;vertical-align: top;">
-<span>Component Route</span>
-<pre><code data-trim contenteditable style="font-size: 1.4em;">
-$router.config([
-  {
-    path: '/home',
-    component: 'home'
-  }
-]);
-</code></pre>
-</div>
-				</section> -->
 				<section>
 					<h2 style="color:#4faa82">Settings - Angular 1.X</h2>
 						<div>
@@ -766,15 +766,6 @@ $router.config([
 									</li>
 								</ol>
 							</section>
-				<!-- <section>
-				<h3>Bonus - use Angular 1.x With Decorators</h3>
-				http://plnkr.co/edit/JhHlOr?p=preview
-				https://github.com/pbastowski/angular2-now
-				</section>
-				<section>
-				<h3>Decorators & Annotations</h3>
-				<div>(few words)</div>
-				</section> -->
 				<section data-background="#ff4b5e">
 					<h1>Summary</h1>
 					<ul>
