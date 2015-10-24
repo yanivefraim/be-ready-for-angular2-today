@@ -284,10 +284,10 @@ module.directive('itemList', function() {
 <ul>
   <li ng-repeat="item in itemListCtrl.items">
     {{item.text}}
+    <button ng-click="itemListCtrl.deleteItem()">
+      Delete
+    </button>
   </li>
-  <button ng-click="itemListCtrl.deleteItem()">
-  	Delete
-  </button>
 </ul>
 					</code></pre>
 				</section>
