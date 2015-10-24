@@ -217,10 +217,10 @@ export class FontSizeComponent {
   <ul>
     <li ng-repeat="item in mainCtrl.items">
       {{item.text}}
+      <button ng-click="mainCtrl.deleteItem(item)">
+        Delete
+      </button>
     </li>
-    <button ng-click="mainCtrl.deleteItem()">
-    	Delete
-    </button>
   </ul>
 </div>
 					</code></pre>
