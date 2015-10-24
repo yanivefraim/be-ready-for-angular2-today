@@ -247,6 +247,14 @@ function MainController() {
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 <div ng-controller="MainCtrl as mainCtrl">
   <h1>Items</h1>
+  <!-- <ul>
+    <li ng-repeat="item in mainCtrl.items">
+      { {item.text}}
+      <button ng-click="mainCtrl.deleteItem(item)">
+        Delete
+      </button>
+    </li>
+  </ul> -->
   <item-list items="mainCtrl.items"></item-list>
 </div>
 					</code></pre>
@@ -353,8 +361,8 @@ module.directive('itemList', function() {
     },
     controllerAs: 'itemListCtrl',
     bindToController: {
-      items: '=',
-      onDelete: '&'
+      items: '=', //input
+      onDelete: '&' //output
     },
     templateUrl: 'item-list.html'
   };
