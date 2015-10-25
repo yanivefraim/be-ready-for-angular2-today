@@ -630,17 +630,17 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 	</code>
 </pre>
 <div><img src="./images/GitHub-Mark.png" style="width: 30px; margin-right: 10px;margin-top: 5px;vertical-align: middle;"><a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/angular-theme-creator-demo-es2015" target="_blank">https://github.com/yanivefraim/angular-theme-creator-demo-es2015</a></div>
-<!-- <div style="position: fixed;top: 250px;right:50px;">  <-- Logic</div>
+<div style="position: fixed;top: 250px;right:50px;">  <-- Logic</div>
 <div style="position: fixed;top: 445px;right:50px;">  <-- View</div>
-<div style="position: fixed;top: 520px;right:50px;">  <-- Interface</div> -->
+<div style="position: fixed;top: 520px;right:50px;">  <-- Interface</div>
 				</section>
 								<section>
 					<h2 style="color:#e4bb45">Convert our "Font Size" directive to TypeScript</h2>
 					<pre><code data-trim contenteditable style="font-size: 1.2em;line-height: 1.3em">
 import angular from 'angular';
 class FontSizeComponent {
-  fontSize: string;
-  fontSizeChanged: Function;
+  fontSize: string; //font size is of type string
+  fontSizeChanged: Function; //fontSizeChanged is of type Function
   /* @ngInject */
   constructor() {
   }
@@ -688,6 +688,9 @@ export class FontSizeComponent {
 					</code>
 					</pre>
 					<div><img src="./images/GitHub-Mark.png" style="width: 30px; margin-right: 10px;margin-top: 5px;vertical-align: middle;"><a style="font-size: 14px;text-align: left;" href="https://github.com/yanivefraim/theme-creator-demo-angular-2" target="_blank">https://github.com/yanivefraim/theme-creator-demo-angular-2</a></div>
+          <div style="position: fixed;top: 230px;right:50px;">  <-- Interface</div>
+<div style="position: fixed;top: 320px;right:50px;">  <-- View</div>
+<div style="position: fixed;top: 520px;right:50px;">  <-- Logic</div>
 				</section>
 				<!-- <section>
 					<h3>Angular2 'FontSize' Component, Option 2</h3>
