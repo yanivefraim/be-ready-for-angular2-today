@@ -26,6 +26,10 @@
 		.reveal table th {
 			background-color: #FF8C00;
 		}
+
+		ul, li {
+			line-height: 1.5em !important;
+		}
 		</style>
 		<!-- Printing and PDF exports -->
 		<script>
@@ -145,7 +149,7 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					<div>
 						<ol>
 							<li style="color: #ff4b5e"><span style="color: #eee">Move towards component architecture</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Use component hierarchy tree, with unidirectional data-flow</li>
+							<li style="color: #ff4b5e"><span style="color: #eee">Use component tree structure, with unidirectional data-flow</li>
 							<li style="color: #ff4b5e"><span style="color: #eee">Write Angular 1.x components using ES2015 / Typescript</li>
 							<!-- <li style="color: #ff4b5e"><span style="color: #eee">Use the "New Router" (Angular 1.5)</li> -->
 						</ol>
@@ -209,7 +213,7 @@ export class FontSizeComponent {
 					</div>
 				</section>
 				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">Let's Take This Piece Of HTML</h3>
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 <div ng-controller="MainCtrl as mainCtrl">
@@ -226,7 +230,7 @@ export class FontSizeComponent {
 					</code></pre>
 				</section>
 				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">And Its Controller</h3>
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 function MainController() {
@@ -242,7 +246,7 @@ function MainController() {
 					</code></pre>
 				</section>
 				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">And Create an 'item-list' Component</h3>
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 <div ng-controller="MainCtrl as mainCtrl">
@@ -261,7 +265,7 @@ function MainController() {
 					<p style="font-size: 16px;text-align: left;">* 'items' is our component's input</p>
 				</section>
 				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">item-list Component's Directive</h3>
 					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
 module.directive('itemList', function() {
@@ -286,7 +290,7 @@ module.directive('itemList', function() {
 					</code></pre>
 				</section>
 				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">item-list Component's Template</h3>
 					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
 <ul>
@@ -300,7 +304,7 @@ module.directive('itemList', function() {
 					</code></pre>
 				</section>
 				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">Cool! But Wait - What Is Wrong Here?</h3>
 					<p>(hint:'item-list' is mutating data it doesn't own) </p>
 					<pre><code style="margin: 40px auto;width: 50%;max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
@@ -313,7 +317,7 @@ ctrl.deleteItem = function(item) {
 					</code></pre>
 				</section>
 				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">Adding An Output Event</h3>
 					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
 module.directive('itemList', function() {
@@ -336,7 +340,7 @@ module.directive('itemList', function() {
 					</code></pre>
 				</section>
 				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">And We register To The Output Event</h3>
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 <div ng-controller="MainCtrl as mainCtrl">
@@ -347,7 +351,7 @@ module.directive('itemList', function() {
 					<p style="font-size: 16px;text-align: left;">* We have 'items' as our component's input and 'on-delete' as its output.</p>
 				</section>
 				<section>
-					<p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p>
+					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">We Now Have A Well Defined Component</h3>
 					<pre><code style="max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
 module.directive('itemList', function() {
@@ -376,16 +380,16 @@ module.directive('itemList', function() {
 					<h2 style="color: black;">Recap - item-list Component</h2>
 					<div style="color: black;">
 						<ul>
-							<li>Component now has a well defined API</li>
-							<li>No shared mutable state (immutable)</li>
-							<li>No side effects / external references (isolated)</li>
-							<li>State is well known (predictable)</li>
+							<li>Our component now has a well defined API</li>
+							<li>No shared mutable state</li>
+							<li>No side effects / external references</li>
+							<li>Easier to track state</li>
 						</ul>
 					</div>
 				</section>
 				<section data-background="#4faa82">
 					<h1 style="font-size: 5em;">02</h1>
-					<h1>Component Tree Data-Flow</h1>
+					<h1>Component Tree Structure</h1>
 				</section>
 				<section>
 					<h2 style="color: #4faa82">First things first...</h2>
@@ -407,8 +411,8 @@ module.directive('itemList', function() {
 					<h2 style="color: #4faa82;">Why Is It Better</h2>
 					<div>
 						<ul>
-							<li style="color: #4faa82"><span style="color: #eee">Explicit data-flow</li>
-							<li style="color: #4faa82"><span style="color: #eee">Well known application state</li>
+							<li style="color: #4faa82"><span style="color: #eee">Predictable - data flow is more explicit</li>
+							<li style="color: #4faa82"><span style="color: #eee">Better control over application state</li>
 							<li style="color: #4faa82"><span style="color: #eee">Scalable</li>
 						</ul>
 					</div>
