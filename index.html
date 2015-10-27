@@ -203,7 +203,7 @@ export class FontSizeComponent {
 					</div>
 				</section>
 				<section>
-					<h2 style="color: #13DAEC;">Why is it better?</h2>
+					<h2 style="color: #13DAEC;">Why Is It Better?</h2>
 					<div>
 						<ul>
 							<li style="color: #13DAEC"><span style="color: #eee">No more scope soup / mutable shared state</li>
@@ -304,7 +304,7 @@ module.directive('itemList', function() {
 				<section>
 					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
 					<h2 style="color: #13DAEC">Cool! But Wait - What Is Wrong Here?</h3>
-					<p>(hint:'item-list' is mutating data it doesn't own) </p>
+					<p>(our component is mutating data it doesn't own!) </p>
 					<pre><code style="margin: 40px auto;width: 50%;max-height: 600px;font-size: 1.3em;line-height: 1.3em;" data-trim contenteditable>
 ctrl.deleteItem = function(item) {
   var idx = ctrl.items.indexOf(item);
@@ -339,7 +339,7 @@ module.directive('itemList', function() {
 				</section>
 				<section>
 					<!-- <p style="color: #13DAEC;position: fixed;top: 0px;left:0px;font-size: 16px;">Moving To Components</p> -->
-					<h2 style="color: #13DAEC">And We Register To The Output Event</h3>
+					<h2 style="color: #13DAEC">Registering An Output Event</h3>
 					<pre><code style="max-height: 600px;font-size: 1.5em;" data-trim contenteditable>
 <div ng-controller="MainCtrl as mainCtrl">
   <h1>Items</h1>
