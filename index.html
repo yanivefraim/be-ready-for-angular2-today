@@ -136,14 +136,26 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 						</ul>
 					</div>
 				</section>
-				<section>
+        <section>
+          <h2 style="color: #ff4b5e">Migration Path, Option A</h2>
+          <p>rm -rf project</p>
+          <p>(Write everything from scratch)</p>
+        </section>
+        <section>
+          <h2 style="color: #ff4b5e">Migration Path, Option B</h2>
+          <ol>
+            <li style="color: #ff4b5e"><span style="color: #eee">Prepare current code</li>
+            <li style="color: #ff4b5e"><span style="color: #eee">Progressively upgrade components using upgrade module</li>
+          </ol>
+        </section>
+				<!-- <section>
 					<h2 style="color: #ff4b5e">Migration Path? (clue: there isn't one, yet..)</h2>
 					<ul>
 						<li style="color: #ff4b5e"><span style="color: #eee">Progressively upgrade (step by step) with upgrade module</li>
 						<li style="color: #ff4b5e"><span style="color: #eee">Angular 1 module.component() Helper</li>
 						<li style="color: #ff4b5e"><span style="color: #eee">Angular 1 Annotation Support</li>
 					</ul>
-				</section>
+				</section> -->
 				<section>
 					<h2 style="color: #ff4b5e">What can I do in order to be ready for Angular 2.0?</h2>
 					<div>
@@ -535,11 +547,12 @@ module.directive('itemList', function() {
 </pre>
 				</section>
 				<section data-background="#4faa82">
-					<h2 style="color: black;">Recap - our app is now</h2>
+					<h2 style="color: black;">Recap - Our Application Is Now</h2>
 					<div style="color: black;">
 						<ol>
-							<li>Modular - has isolated, well defined components</li>
-							<li>Predictable - child component is immutable</li>
+							<li>Predictable - data flows in a single direction from parent to child</li>
+							<li>Scalable</li>
+              <li>Easier to debug</li>
 						</ol>
 					</div>
 				</section>
