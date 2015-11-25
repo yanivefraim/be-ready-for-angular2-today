@@ -102,7 +102,7 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 
 				</section>
 				<section>
-					<h2 style="color: #ff4b5e">What is wrong with Angular 1.X?</h2>
+					<h2 style="color: #ff4b5e">What Is Wrong With Angular 1.X?</h2>
 					<ul>
 							<li class="fragment fade-in" style="color: #ff4b5e"><span style="color: #eee">Digest loop/dirty checking</li>
 							<li class="fragment fade-in" style="color: #ff4b5e"><span style="color: #eee">Scope inheritance</li>
@@ -112,11 +112,11 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 						</ul>
 				</section>
 				<section>
-					<h2 style="color: #ff4b5e">Why is Angular 2 better? </h2>
+					<h2 style="color: #ff4b5e">Why Is Angular 2 Better? </h2>
 					<img src="./images/graves.png" />
 				</section>
 				<section>
-					<h2 style="color: #ff4b5e">Angular 2 is going to be awesome!</h2>
+					<h2 style="color: #ff4b5e">Angular 2 Is Going To Be Awesome!</h2>
 					<div>
 						<ul>
 							<li class="fragment fade-in" style="color: #ff4b5e"><span style="color: #eee">Modular - es2015 modules</li>
@@ -128,6 +128,9 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 						</ul>
 					</div>
 				</section>
+         <section>
+          <h2 style="color: #ff4b5e">What About A Migration Path?</h2>
+        </section>
         <section>
           <h2 style="color: #ff4b5e">Migration Path, Option A</h2>
           <img src="./images/rmrf.png" width="40%" style="margin: 20px 0;background: none;border: none;box-shadow: none;" />
@@ -137,8 +140,8 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
         <section>
           <h2 style="color: #ff4b5e">Migration Path, Option B</h2>
           <ol>
-            <li style="color: #ff4b5e"><span style="color: #eee">Prepare current code</li>
-            <li style="color: #ff4b5e"><span style="color: #eee">ngUpgrade - Progressively upgrade components</li>
+            <li class="fragment fade-in" style="color: #ff4b5e"><span style="color: #eee">Prepare current code</li>
+            <li class="fragment fade-in" style="color: #ff4b5e"><span style="color: #eee">ngUpgrade - Progressively upgrade components</li>
           </ol>
         </section>
 				<!-- <section>
@@ -150,12 +153,12 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 					</ul>
 				</section> -->
 				<section>
-					<h2 style="color: #ff4b5e">What can I do in order to be ready for Angular 2.0?</h2>
+					<h2 style="color: #ff4b5e">What Can I Do In Order To Be Ready For Angular 2.0?</h2>
 					<div>
 						<ol>
-							<li style="color: #ff4b5e"><span style="color: #eee">Move towards component architecture</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Use component tree structure, with unidirectional data-flow</li>
-							<li style="color: #ff4b5e"><span style="color: #eee">Write Angular 1.x components using ES2015 / Typescript</li>
+							<li class="fragment fade-in" style="color: #ff4b5e"><span style="color: #eee">Move towards component architecture</li>
+							<li class="fragment fade-in" style="color: #ff4b5e"><span style="color: #eee">Use component tree structure, with unidirectional data-flow</li>
+							<li class="fragment fade-in" style="color: #ff4b5e"><span style="color: #eee">Write Angular 1.x components using ES2015 / Typescript</li>
 							<!-- <li style="color: #ff4b5e"><span style="color: #eee">Use the "New Router" (Angular 1.5)</li> -->
 						</ol>
 					</div>
@@ -200,10 +203,10 @@ export class FontSizeComponent {
 					<h2 style="color: #13DAEC;">What Do We Want From Our Component?</h2>
 					<div>
 						<ul>
-							<li style="color: #13DAEC"><span style="color: #eee">Well-defined public API - inputs and outputs
+							<li class="fragment fade-in" style="color: #13DAEC"><span style="color: #eee">Well-defined public API - inputs and outputs
 </li>
-							<li style="color: #13DAEC"><span style="color: #eee">Immutable - does not change data which it doesn't own</li>
-							<li style="color: #13DAEC"><span style="color: #eee">Isolated - no side effects / external references</li>
+							<li class="fragment fade-in" style="color: #13DAEC"><span style="color: #eee">Immutable - does not change data which it doesn't own</li>
+							<li class="fragment fade-in" style="color: #13DAEC"><span style="color: #eee">Isolated - no side effects / external references</li>
 						</ul>
 					</div>
 				</section>
@@ -439,7 +442,7 @@ module.directive('itemList', function() {
 					<a style="font-size: 14px;text-align: left;" href="https://facebook.github.io/react/docs/thinking-in-react.html" target="_blank">https://facebook.github.io/react/docs/thinking-in-react.html</a>
 				</section>
 				<section style="top: 42px; display: block;">
-					<h2 style="color: #4faa82;">Lets do it ourselves</h2>
+					<h2 style="color: #4faa82;">Lets Do It Ourselves</h2>
 					<div style="height: 420px;width: 100%;">
 						<iframe src="http://yanivefraim.github.io/angular-theme-creator-demo" style="height: 100%;width: 100%;"></iframe>
 					</div>
@@ -516,7 +519,7 @@ module.directive('itemList', function() {
 </pre>
 				</section>
 				<section>
-					<h2 style="color: #4faa82">Font Size component</h2>
+					<h2 style="color: #4faa82">Font Size Component</h2>
 					<pre><code data-trim contenteditable  style="line-height: 2em;font-size: 1.15em;">
   directive('fontSizeComponent', function() {
  return {
@@ -544,37 +547,27 @@ module.directive('itemList', function() {
 					<div style="color: black;">
 						<ol>
 							<li>Predictable - data flows in a single direction from parent to child</li>
-							<li>Scalable</li>
+              <li>We have better control over application state</li>
+              <li>Scalable</li>
               <li>Easier to debug</li>
 						</ol>
 					</div>
 				</section>
-				<!-- <section>
-					<h2>What can I do in order to be ready for Angular 2.0?</h2>
-					<div>
-						<ol>
-							<li style="opacity: 0.2;">Use Component Tree Architecture</li>
-							<li style="color:#e4bb45
-">Write Angular 1.x Components using ES2015/Typescript</span></li>
-							<li>Use the "New Router" (Angular 1.5)</li>
-						</ol>
-					</div>
-				</section> -->
 				<section data-background="#e4bb45">
 					<h1 style="font-size: 5em;">03</h1>
-					<h1>Write Angular 1.x Components using ES2015/Typescript</h1>
+					<h1>Write Angular 1.x Components Using ES2015/Typescript</h1>
 				</section>
 				<section>
 					<h2 style="color:#e4bb45">Why ES2015?</h2>
 					<div>
 						<ul>
-							<li>Modules</li>
-							<li>Arrow functions</li>
-							<li>Block-level scope</li>
-							<li>Classes</li>
-							<li>Template Strings</li>
-							<li>Promises</li>
-							<li>And much more...</li>
+							<li style="color: #e4bb45"><span style="color: #eee">Modules</li>
+							<li style="color: #e4bb45"><span style="color: #eee">Arrow functions</li>
+							<li style="color: #e4bb45"><span style="color: #eee">Block-level scope</li>
+							<li style="color: #e4bb45"><span style="color: #eee">Classes</li>
+							<li style="color: #e4bb45"><span style="color: #eee">Template Strings</li>
+							<li style="color: #e4bb45"><span style="color: #eee">Promises</li>
+							<li style="color: #e4bb45"><span style="color: #eee">And much more...</li>
 						</ul>
 					</div>
 				</section>
@@ -738,16 +731,16 @@ export class FontSizeComponent {
 					<h1>Useing The "New Router"</h1>
 				</section>
 				<section>
-					<h2 style="color:#4faa82">Why building a new router?</h2>
+					<h2 style="color:#4faa82">Why Building A New Router?</h2>
 					<div>
 						<ul>
-							<li style="color: #4faa82"><span style="color: #eee">ngRoute - too simple</li>
-							<li style="color: #4faa82"><span style="color: #eee">ui-router - not build for component architecture</li>
+							<li class="fragment fade-in" style="color: #4faa82"><span style="color: #eee">ngRoute - too simple</li>
+							<li class="fragment fade-in" style="color: #4faa82"><span style="color: #eee">ui-router - not build for component architecture</li>
 						</ul>
 					</div>
 				</section>
 				<section>
-					<h2 style="color:#4faa82">The new router - Component Router</h2>
+					<h2 style="color:#4faa82">The New Router - Component Router</h2>
 					<div>
 						<ul>
 							<li style="color: #4faa82"><span style="color: #eee">Built with Component Structure in mind: route per component</li>
@@ -756,7 +749,7 @@ export class FontSizeComponent {
 					</div>
 				</section>
 				<section>
-					<h2 style="color:#4faa82">Porting to the new router</h2>
+					<h2 style="color:#4faa82">Porting To The New Router</h2>
 					<div style="display: inline-block;width: 40%;">
 						<ul style="list-style-type: none;text-align: center;">
 							<li>ui-route</li>
@@ -788,13 +781,13 @@ export class FontSizeComponent {
 });
 							</code></pre></div></section>
 							<section>
-								<h2 style="color:#4faa82;">Settings - Angular 1.X, Based on Conventions</h2>
+								<h2 style="color:#4faa82;">Settings - Angular 1.X, Based On Conventions</h2>
 								<ol style="line-height: 2em;">
-									<li>
+									<li class="fragment fade-in" style="color: #4faa82"><span style="color: #eee">
 										Load the component template asynchronously from:
 										components/[COMPONENT_NAME]/[COMPONENT_NAME].html
 									</li>
-									<li>
+									<li class="fragment fade-in" style="color: #4faa82"><span style="color: #eee">
 										Instantiate:
 										<div>[COMPONENT_NAME]Controller</div>
 									</li>
