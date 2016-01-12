@@ -175,7 +175,7 @@ Hacking on migrating to Angular 2.0 stuff on the last few months.
 				<section>
 					<h2 style="color: #13DAEC;">An Angular 2.0 Component</h2>
 					<pre><code data-trim contenteditable style="line-height: 1.2em; font-size: 1.5em;">
-import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
+import {Component, View, EventEmitter} from 'angular2/core';
 @Component({
     selector: 'font-size-component',
     inputs: ['fontSize'],
@@ -190,7 +190,7 @@ export class FontSizeComponent {
     fontSizeChange: EventEmitter = new EventEmitter();
 
     modelChanged($event) {
-      this.fontSizeChange.next($event);
+      this.fontSizeChange.emit($event);
     }
 }
 					</code>
@@ -663,7 +663,7 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 								<section>
 					<h2 style="color:#e4bb45">Let's write it in Angular 2</h2>
 					<pre><code data-trim contenteditable style="line-height: 1.2em; font-size: 1.5em;">
-import {Component, EventEmitter} from 'angular2/core';
+import {Component, View, EventEmitter} from 'angular2/core';
 @Component({
     selector: 'font-size-component',
     inputs: ['fontSize'],
