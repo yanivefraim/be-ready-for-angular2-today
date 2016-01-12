@@ -216,7 +216,6 @@ export class FontSizeComponent {
 						<ul>
 							<li style="color: #13DAEC"><span style="color: #eee">No more scope soup / mutable shared state</li>
 							<li style="color: #13DAEC"><span style="color: #eee">Component's state is well known</li>
-							<li style="color: #13DAEC"><span style="color: #eee">Isolated - no side effects</li>
 						</ul>
 					</div>
 				</section>
@@ -664,22 +663,21 @@ export default angular.module('themeCreatorFontSizeComponentModule', [])
 								<section>
 					<h2 style="color:#e4bb45">Let's write it in Angular 2</h2>
 					<pre><code data-trim contenteditable style="line-height: 1.2em; font-size: 1.5em;">
-import {Component, View, FORM_DIRECTIVES, EventEmitter} from 'angular2/angular2';
+import {Component, EventEmitter} from 'angular2/core';
 @Component({
     selector: 'font-size-component',
     inputs: ['fontSize'],
     outputs: ['fontSizeChange']
 })
 @View({
-    template: `<input [ng-model]="fontSize" (input)="modelChanged($event.target.value)" id="fontSize" />`,
-    directives: [FORM_DIRECTIVES]
+    template: `<input [ngModel]="fontSize" (ngModelChanged)="modelChanged($event)" id="fontSize" />`
 })
 export class FontSizeComponent {
     fontSize: string;
     fontSizeChange: EventEmitter = new EventEmitter();
 
     modelChanged($event) {
-      this.fontSizeChange.next($event);
+      this.fontSizeChange.emit($event);
     }
 }
 					</code>
